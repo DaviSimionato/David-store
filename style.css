@@ -8,6 +8,7 @@ body {
 }
 a {
     font-style: none;
+    text-decoration: none;
 }
 span.material-symbols-outlined {
     user-select: none;
@@ -52,4 +53,23 @@ header {
 .menuLateral {
     color: #fff;
     font-size: 30px;
+}
+.entrarOuCad {
+    display: flex;    
+    align-items: center;
+    width: 150px;
+}
+.entrarOuCad p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+}
+.entrarOuCad a {
+    font-size: 12px;
+    color: #fff;
+}
+.entrarOuCad span {
+    font-size: 30px;
+    color: #fff;
+    padding-right: 15px;
 }
