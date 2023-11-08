@@ -16,5 +16,10 @@
 </head>
 <body>
     <?php include("includes/header.php");?>
+    <section class="introSite">
+        <div class="banner">
+            <img src="logo/svg/bannerIndex.svg" alt="banner">
+        </div>
+    </section>
 </body>
 </html>
