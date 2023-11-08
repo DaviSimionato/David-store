@@ -6,6 +6,9 @@ body {
     padding: 0;
     margin: 0;
 }
+span.material-symbols-outlined {
+    user-select: none;
+}
 header {
     background-color: #E8772E;
 }
@@ -46,7 +49,4 @@ header {
 .menuLateral {
     color: #fff;
     font-size: 30px;
-}
-span.material-symbols-outlined {
-    user-select: none;
 }

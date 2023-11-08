@@ -23,9 +23,9 @@
                 <input type="text" name="pesquisa" class="pesqBar">
                 <span class="material-symbols-outlined">search</span>
             </div>
-            <div class="user">
-            <span class="material-symbols-outlined">account_circle</span>
-            <p></p>
+            <div class="entrarOuCad">
+                <span class="material-symbols-outlined">account_circle</span>
+                <p><strong><a href="#">Entrar</a></strong> ou <strong><a href="#">Cadastre-se</a></strong></p>
             </div>
         </div>
     </header>
