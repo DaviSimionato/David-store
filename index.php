@@ -27,6 +27,10 @@
                 <span class="material-symbols-outlined">account_circle</span>
                 <p><strong><a href="#">Entrar</a></strong> ou <strong><a href="#">Cadastre-se</a></strong></p>
             </div>
+            <div class="linksUser">
+                <a href="#"><span class="material-symbols-outlined fav" title="Favoritos">favorite</span></a>
+                <a href="#"><span class="material-symbols-outlined" title="Carrinho">shopping_cart</span></a>
+            </div>
         </div>
     </header>
 </body>

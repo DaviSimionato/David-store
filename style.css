@@ -7,8 +7,9 @@ body {
     margin: 0;
 }
 a {
-    font-style: none;
     text-decoration: none;
+    margin: 0;
+    padding: 0;
 }
 span.material-symbols-outlined {
     user-select: none;
@@ -47,7 +48,7 @@ header {
     border: 0;
     padding-left: 5px;
     border-radius: 5px 0 0 5px;
-    width: 80%;
+    width: 100%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
 }
 .menuLateral {
@@ -72,4 +73,24 @@ header {
     font-size: 30px;
     color: #fff;
     padding-right: 15px;
+}
+.linksUser {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.linksUser a {
+    height: 25px;
+}
+.linksUser span {
+    color: #fff;
+    font-size: 25px;
+}
+.linksUser .fav {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    margin-right: 30px;
 }
