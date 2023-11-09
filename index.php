@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css">
     <title>David'store</title>
 </head>
-<body>
+<body style="background-color: #D7E1E0;">
     <?php include("includes/header.php");?>
     <div class="bannerIntro">
             <img src="logo/svg/bannerIndex.svg" alt="banner">

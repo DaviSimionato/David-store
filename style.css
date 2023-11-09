@@ -81,7 +81,7 @@ header {
 .entrarOuCad span {
     font-size: 30px;
     color: #fff;
-    padding-right: 15px;
+    padding-right: 10px;
 }
 .linksUser {
     display: flex;
@@ -110,16 +110,10 @@ header {
     justify-content: center;
     background-color: #0035E7;
 } 
-.indexBg {
-    width: 100%;
-    background-color: #D7E1E0;
-    display: flex;
-    justify-content: center;
-    
-}
 .introIndex {
     background-color: #fff;
     max-width: 1400px;
+    margin: 0 auto;
 }
 .recomendBar {
     background-color: #E8772E;
