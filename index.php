@@ -26,6 +26,7 @@
                 <h2>RECOMENDADO</h2>
             </div>
             <div class="recomendadosProdutos">
+            <span class="material-symbols-outlined ant" data-vlr='0'>navigate_before</span>
                 <?php 
                     while($prod = $buscaProdutos->fetch_object()) {
                         echo "
@@ -41,8 +42,10 @@
                         ";
                     }
                 ?>
+                <span class="material-symbols-outlined prox" data-vlr="5">navigate_next</span>
             </div>
         </div>
     </section>
+    <script src="js/index.js"></script>
 </body>
 </html>

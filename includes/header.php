@@ -3,7 +3,7 @@
             <span class="material-symbols-outlined menuLateral">menu</span>
             <img src="logo/svg/logo-no-background.svg" alt="Logo" height="20">
             <div class="barraPesquisa">
-                <input type="text" name="pesquisa" class="pesqBar">
+                <input type="text" name="pesquisa" class="pesqBar" placeholder="Busque aqui">
                 <a href="#"><span class="material-symbols-outlined" title="Pesquisar">search</span></a>
             </div>
             <div class="entrarOuCad">
