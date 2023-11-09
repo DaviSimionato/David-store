@@ -6,10 +6,14 @@ let max = 5;
 function changeProds() {
     setSetas();
     produtos.forEach((prod)=> {
+        if(prod.classList.contains("teste")) {
+            prod.classList.remove("teste");
+        }
         prod.style.display = "none";
     });
     for(let i=min;i<max;i++) {
         produtos[i].style.display = "flex";
+        produtos[i].classList.add("teste");
     }
 }
 setaProx.addEventListener("click",()=> {

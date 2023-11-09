@@ -229,6 +229,13 @@ header {
     font-size: 20px;
     color: #E8772E;
 }
+.teste {
+    animation: teste linear .5s;
+}
 @keyframes teste {
-    
+    from {
+        opacity: 0;
+    }to {
+        opacity: 1;
+    }
 }
