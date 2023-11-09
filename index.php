@@ -16,7 +16,6 @@
     <title>David'store</title>
 </head>
 <body>
-    <a href="q2">22</a>
     <?php include("includes/header.php");?>
     <div class="bannerIntro">
             <img src="logo/svg/bannerIndex.svg" alt="banner">
