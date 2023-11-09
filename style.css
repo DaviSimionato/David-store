@@ -31,6 +31,8 @@ a {
 img {
     max-width: 100%;
     display: block;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 span.material-symbols-outlined {
     user-select: none;
@@ -136,11 +138,13 @@ header {
     background-color: #E8772E;
     margin-top: 40px;
 }
-.recomendBar h2 {
+.introIndex h2 {
     font-size: 20px;
-    color: #fff;
     margin-left: 25px;
     padding: 10px;
+}
+.recomendBar h2 {
+    color: #fff;
 }
 .recomendadosProdutos {
     display: flex;
@@ -156,6 +160,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    user-select: none;
 }
 .produtos img {
     margin: 0 auto;   
@@ -196,8 +201,31 @@ header {
 .recomendadosProdutos .prox,.ant {
     display: flex;
     align-items: center;
-    font-size: 30px;
 }
-.recomendadosProdutos .prox,.ant:hover {
+.recomendadosProdutos .ant span, .prox span {
+    font-size: 30px;
+    text-align: center;
+}
+.recomendadosProdutos .ant span:hover, .prox span:hover{
     cursor: pointer;
+    background-color: #7070702c;
+    border-radius: 50%;
+}
+.introIndex .banner {
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 1330px;
+}
+.marcasRecomendadasTitle {
+    display: flex;
+    align-items: center;
+}
+.marcasRecomendadasTitle span {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    font-size: 20px;
+    color: #E8772E;
 }

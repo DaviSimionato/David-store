@@ -1,13 +1,14 @@
 <?php 
     require_once("includes/banco.php");
-    $buscaProdutos = $bd->query("select * from vwProdutos order by codigo limit 20");
+    $buscaProdutos = $bd->query("select * from vwProdutos limit 10");
+    $buscaMarcas = $bd->query("select * from marcas");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="logo/davidstore-icon.ico" type="image/ico">
+    <link rel="icon" href="imgs/davidstore-icon.ico" type="image/ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,7 +19,7 @@
 <body style="background-color: #D7E1E0;">
     <?php include("includes/header.php");?>
     <div class="bannerIntro">
-            <img src="logo/svg/bannerIndex.svg" alt="banner">
+            <img src="imgs/svg/bannerIndex.svg" alt="banner">
     </div>
     <section class="introIndex">
         <div class="container"> 
@@ -26,7 +27,9 @@
                 <h2>RECOMENDADO</h2>
             </div>
             <div class="recomendadosProdutos">
-            <span class="material-symbols-outlined ant" data-vlr='0'>navigate_before</span>
+                <div class="ant">
+                    <span class="material-symbols-outlined">navigate_before</span>
+                </div>
                 <?php 
                     while($prod = $buscaProdutos->fetch_object()) {
                         echo "
@@ -42,8 +45,15 @@
                         ";
                     }
                 ?>
-                <span class="material-symbols-outlined prox" data-vlr="5">navigate_next</span>
+                <div class="prox">
+                    <span class="material-symbols-outlined ">navigate_next</span>
+                </div>
             </div>
+        </div>
+        <img src="imgs/svg/bannerRecomend.svg" alt="banner" class="banner">
+        <div class="marcasRecomendadasTitle">
+                <h2 style="text-transform: uppercase;">Marcas Recomendadas</h2>
+                <span class="material-symbols-outlined">thumb_up</span>
         </div>
     </section>
     <script src="js/index.js"></script>
