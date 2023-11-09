@@ -1,6 +1,6 @@
 <?php 
     require_once("includes/banco.php");
-    $buscaProdutos = $bd->query("select * from vwProdutos");
+    $buscaProdutos = $bd->query("select * from vwProdutos order by codigo limit 20");
 ?>
 <!DOCTYPE html>
 <html lang="en">

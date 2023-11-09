@@ -1,13 +1,10 @@
 const produtos = document.querySelectorAll(".recomendadosProdutos .produtos");
 const setaProx = document.querySelector(".recomendadosProdutos .prox");
 const setaAnt = document.querySelector(".recomendadosProdutos .ant");
+let min = 0;
+let max = 5;
 function changeProds() {
-    let min = parseInt(setaAnt.dataset.vlr);
-    let max = parseInt(setaProx.dataset.vlr);
-    if(max > produtos.length) {
-        setaProx.dataset.vlr = 5;
-        setaAnt.dataset.vlr = 0;
-    }
+    setSetas();
     produtos.forEach((prod)=> {
         prod.style.display = "none";
     });
@@ -16,18 +13,29 @@ function changeProds() {
     }
 }
 setaProx.addEventListener("click",()=> {
-    setaProx.dataset.vlr = parseInt(setaProx.dataset.vlr) + 5;
-    setaAnt.dataset.vlr = parseInt(setaAnt.dataset.vlr) + 5;
-    changeProds();
+    if(max < produtos.length) {
+        min+=1;
+        max+=1;
+        changeProds();
+    }
 });
 setaAnt.addEventListener("click",()=> {
-    if(setaProx.dataset.vlr < 10 || setaAnt.dataset.vlr < 5) {
-        setaProx.dataset.vlr = 5;
-        setaAnt.dataset.vlr = 0;
-    }else {
-        setaProx.dataset.vlr = parseInt(setaProx.dataset.vlr) - 5;
-        setaAnt.dataset.vlr = parseInt(setaAnt.dataset.vlr) - 5;
+    if(min > 0) {
+        min-=1;
+        max-=1;
+        changeProds();
     }
-    changeProds();
 });
+function setSetas() {
+    if(min < 1) {
+        setaAnt.style.opacity = "0";
+    }else {
+        setaAnt.style.opacity = "1"; 
+    }
+    if(max >= produtos.length) {
+        setaProx.style.opacity = "0";
+    }else {
+        setaProx.style.opacity = "1";
+    }
+}
 changeProds();
