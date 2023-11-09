@@ -15,4 +15,4 @@
                 <a href="#"><span class="material-symbols-outlined" title="Carrinho">shopping_cart</span></a>
             </div>
         </div>
-    </header>
+</header>
