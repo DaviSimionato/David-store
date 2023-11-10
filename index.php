@@ -1,6 +1,6 @@
 <?php 
     require_once("includes/banco.php");
-    $buscaProdutos = $bd->query("select * from vwProdutos where marca = 'Samsung'");
+    $buscaProdutos = $bd->query("select * from vwProdutos");
     $buscaMarcas = $bd->query("select * from marcas limit 6");
 ?>
 <!DOCTYPE html>
@@ -55,7 +55,7 @@
                 <h2 style="text-transform: uppercase;">Marcas Recomendadas</h2>
                 <span class="material-symbols-outlined">thumb_up</span>
         </div>
-        <div class="marcasRecomendadas">
+        <div class="marcasRecomendadas container1330">
             <?php 
                 while($marca = $buscaMarcas->fetch_object()) {
                     echo "

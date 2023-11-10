@@ -41,6 +41,10 @@ span.material-symbols-outlined {
     max-width: 1400px;
     margin: 0 auto;
 }
+.container1330 {
+    max-width: 1330px;
+    margin: 0 auto;
+}
 /* HEADER */
 header {
     background-color: #E8772E;
@@ -146,6 +150,7 @@ header {
 .recomendBar h2 {
     color: #fff;
 }
+/*Produtos recomandados*/
 .recomendadosProdutos {
     display: flex;
     flex-wrap: wrap;
@@ -211,11 +216,13 @@ header {
     background-color: #7070702c;
     border-radius: 50%;
 }
+/**/
 .introIndex .banner {
     margin: 0 auto;
     border-radius: 5px;
     width: 1330px;
 }
+/*Marcas recomendadas*/
 .marcasRecomendadasTitle {
     display: flex;
     align-items: center;
@@ -229,7 +236,43 @@ header {
     font-size: 20px;
     color: #E8772E;
 }
-.teste {
+.marcasRecomendadas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.marcasRecomendadas .marca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 25px;
+}
+.marcasRecomendadas .marca img {
+    padding: 15px;
+    width: 115px;
+    height: 45px;
+    padding-bottom: 0;
+}
+.marcasRecomendadas .marca h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
+.marcasRecomendadas a {
+    padding: 5px;
+    background-color: #E8772E;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+}
+/**/
+/*Animações*/
+.fadeIn {
     animation: fadeIn linear .5s;
 }
 

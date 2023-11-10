@@ -13,7 +13,7 @@ function changeProds() {
     });
     for(let i=min;i<max;i++) {
         produtosRecomendados[i].style.display = "flex";
-        produtosRecomendados[i].classList.add("teste");
+        produtosRecomendados[i].classList.add("fadeIn");
     }
 }
 setaProx.addEventListener("click",()=> {
