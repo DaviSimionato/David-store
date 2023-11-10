@@ -1,23 +1,23 @@
-const produtos = document.querySelectorAll(".recomendadosProdutos .produtos");
+const produtosRecomendados = document.querySelectorAll(".recomendadosProdutos .produtos");
 const setaProx = document.querySelector(".recomendadosProdutos .prox");
 const setaAnt = document.querySelector(".recomendadosProdutos .ant");
 let min = 0;
 let max = 5;
 function changeProds() {
     setSetas();
-    produtos.forEach((prod)=> {
-        if(prod.classList.contains("teste")) {
-            prod.classList.remove("teste");
+    produtosRecomendados.forEach((prod)=> {
+        if(prod.classList.contains("fadeIn")) {
+            prod.classList.remove("fadeIn");
         }
         prod.style.display = "none";
     });
     for(let i=min;i<max;i++) {
-        produtos[i].style.display = "flex";
-        produtos[i].classList.add("teste");
+        produtosRecomendados[i].style.display = "flex";
+        produtosRecomendados[i].classList.add("teste");
     }
 }
 setaProx.addEventListener("click",()=> {
-    if(max < produtos.length) {
+    if(max < produtosRecomendados.length) {
         min+=1;
         max+=1;
         changeProds();
@@ -36,10 +36,27 @@ function setSetas() {
     }else {
         setaAnt.style.opacity = "1"; 
     }
-    if(max >= produtos.length) {
+    if(max >= produtosRecomendados.length) {
         setaProx.style.opacity = "0";
     }else {
         setaProx.style.opacity = "1";
     }
+}
+window.addEventListener("resize", ()=> {
+    if(document.querySelector("body").getClientRects()[0].width < 1200) {
+        min = 0;
+        max = produtosRecomendados.length;
+        changeProds();
+    }
+    if(document.querySelector("body").getClientRects()[0].width > 1200) {
+        min = 0;
+        max = 5;
+        changeProds();
+    }
+});
+if(document.querySelector("body").getClientRects()[0].width < 1200) {
+    min = 0;
+    max = produtosRecomendados.length;
+    changeProds();
 }
 changeProds();

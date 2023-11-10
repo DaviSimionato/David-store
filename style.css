@@ -230,9 +230,10 @@ header {
     color: #E8772E;
 }
 .teste {
-    animation: teste linear .5s;
+    animation: fadeIn linear .5s;
 }
-@keyframes teste {
+
+@keyframes fadeIn {
     from {
         opacity: 0;
     }to {
