@@ -1,6 +1,7 @@
 <?php 
     require_once("includes/banco.php");
-    $buscaProdutos = $bd->query("select * from vwProdutos");
+    $buscaProdutosRecomendados = $bd->query("select * from vwProdutosRecomendados");
+    $buscaDepartamentos = $bd->query("select * from departamentos");
     $buscaMarcas = $bd->query("select * from vwmarcasRecomendadas limit 6");
 ?>
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
                     <span class="material-symbols-outlined">navigate_before</span>
                 </div>
                 <?php 
-                    while($prod = $buscaProdutos->fetch_object()) {
+                    while($prod = $buscaProdutosRecomendados->fetch_object()) {
                         echo "
                         <div class='produtos prodRec' title='{$prod->nome}'>
                             <img src='{$prod->imagemProduto}' alt=' width='268' height='162'>
@@ -63,6 +64,23 @@
                             <img src='{$marca->foto}' alt='{$marca->nome}'>
                             <h2>{$marca->nome}</h2>
                             <a href='#'>VER PRODUTOS</a>
+                        </div>
+                    ";
+                }
+            ?>
+        </div>
+        <div class="marcasRecomendadasTitle">
+                <h2 style="text-transform: uppercase;">Marcas Recomendadas</h2>
+                <span class="material-symbols-outlined">lists</span>
+        </div>
+        <div class="marcasRecomendadas container1330 departamentos">
+            <?php 
+                while($dep = $buscaDepartamentos->fetch_object()) {
+                    echo "
+                        <div class='departamento'>
+                            <img src='{$dep->foto}' alt='{$dep->departamento}'>
+                            <h2>{$dep->departamento}</h2>
+                            <a href='#'></a>
                         </div>
                     ";
                 }
