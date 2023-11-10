@@ -1,7 +1,7 @@
 <?php 
     require_once("includes/banco.php");
     $buscaProdutos = $bd->query("select * from vwProdutos");
-    $buscaMarcas = $bd->query("select * from marcas limit 6");
+    $buscaMarcas = $bd->query("select * from vwmarcasRecomendadas limit 6");
 ?>
 <!DOCTYPE html>
 <html lang="en">
