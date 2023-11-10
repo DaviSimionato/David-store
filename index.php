@@ -22,7 +22,7 @@
             <img src="imgs/svg/bannerIndex.svg" alt="banner">
     </div>
     <section class="introIndex">
-        <div class="container"> 
+        <div class="container1400"> 
             <div class="recomendBar">
                 <h2>RECOMENDADO</h2>
             </div>
