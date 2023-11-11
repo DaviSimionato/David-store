@@ -155,6 +155,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 20px;
 }
 .produtos {
     max-width: 237px;
@@ -243,12 +244,14 @@ header {
 }
 .marcasRecomendadas .marca {
     display: flex;
+    min-width: 185px;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
     border-radius: 5px;
     padding: 25px;
+    margin: 0 15px;
 }
 .marcasRecomendadas .marca img {
     padding: 15px;
@@ -270,6 +273,25 @@ header {
     font-size: 16px;
     color: #fff;
     font-weight: 700;
+}
+.departamentos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.departamento {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+.departamento h2 {
+    margin: 10px 0;
+}
+.produtosMaisAcessados {
+    
 }
 /**/
 /*Animações*/

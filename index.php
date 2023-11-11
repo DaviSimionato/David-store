@@ -1,6 +1,7 @@
 <?php 
     require_once("includes/banco.php");
     $buscaProdutosRecomendados = $bd->query("select * from vwProdutosRecomendados");
+    $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos limit 20");
     $buscaDepartamentos = $bd->query("select * from departamentos");
     $buscaMarcas = $bd->query("select * from vwmarcasRecomendadas limit 6");
 ?>
@@ -61,9 +62,8 @@
                 while($marca = $buscaMarcas->fetch_object()) {
                     echo "
                         <div class='marca'>
-                            <img src='{$marca->foto}' alt='{$marca->nome}'>
                             <h2>{$marca->nome}</h2>
-                            <a href='#'>VER PRODUTOS</a>
+                            <img src='{$marca->foto}' alt='{$marca->nome}'>
                         </div>
                     ";
                 }
@@ -73,19 +73,44 @@
                 <h2 style="text-transform: uppercase;">Marcas Recomendadas</h2>
                 <span class="material-symbols-outlined">lists</span>
         </div>
-        <div class="marcasRecomendadas container1330 departamentos">
+        <div class="departamentos container1330 ">
             <?php 
                 while($dep = $buscaDepartamentos->fetch_object()) {
                     echo "
                         <div class='departamento'>
-                            <img src='{$dep->foto}' alt='{$dep->departamento}'>
+                            <a href='#'>
                             <h2>{$dep->departamento}</h2>
-                            <a href='#'></a>
+                            <img src='{$dep->foto}' alt='{$dep->departamento}'>
+                            </a>
                         </div>
                     ";
                 }
             ?>
         </div>
+        <img src="imgs/svg/bannerAcer.svg" alt="banner" class="banner">
+        <div class="produtosMaisAcessados">
+                <div class="ant">
+                    <span class="material-symbols-outlined">navigate_before</span>
+                </div>
+                <?php 
+                    while($prodMaisAces = $buscaProdutosMaisAces->fetch_object()) {
+                        echo "
+                        <div class='produtos prodMA' title='{$prodMaisAces->nome}'>
+                            <img src='{$prodMaisAces->imagemProduto}' alt=' width='268' height='162'>
+                            <p class='nome'>{$prodMaisAces->nome}</p>
+                            <div class='infoPreco'>
+                                <p class='preco'>{$prodMaisAces->precoAvista}</p>
+                                <p class='avisoPix'>À vista no PIX</p>
+                            </div>
+                            <a href='#' class='comprar'>COMPRAR</a>
+                        </div>
+                        ";
+                    }
+                ?>
+                <div class="prox">
+                    <span class="material-symbols-outlined ">navigate_next</span>
+                </div>
+            </div>
     </section>
     <script src="js/index.js"></script>
 </body>
