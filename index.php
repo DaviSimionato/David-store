@@ -26,7 +26,7 @@
     <section class="introIndex">
         <div class="container1400"> 
             <div class="recomendBar">
-                <h2>RECOMENDADO</h2>
+                <h2 class="tituloSection">RECOMENDADO</h2>
             </div>
             <div class="recomendadosProdutos">
                 <div class="ant">
@@ -53,8 +53,8 @@
             </div>
         </div>
         <img src="imgs/svg/bannerRecomend.svg" alt="banner" class="banner">
-        <div class="marcasRecomendadasTitle">
-                <h2 style="text-transform: uppercase;">Marcas Recomendadas</h2>
+        <div class="sectionTopic">
+                <h2 style="text-transform: uppercase;" class="tituloSection">Marcas Recomendadas</h2>
                 <span class="material-symbols-outlined">thumb_up</span>
         </div>
         <div class="marcasRecomendadas container1330">
@@ -69,8 +69,8 @@
                 }
             ?>
         </div>
-        <div class="marcasRecomendadasTitle">
-                <h2 style="text-transform: uppercase;">Marcas Recomendadas</h2>
+        <div class="sectionTopic">
+                <h2 style="text-transform: uppercase;" class="tituloSection">Departamentos</h2>
                 <span class="material-symbols-outlined">lists</span>
         </div>
         <div class="departamentos container1330 ">
@@ -88,6 +88,10 @@
             ?>
         </div>
         <img src="imgs/svg/bannerAcer.svg" alt="banner" class="banner">
+        <div class="sectionTopic">
+                <h2 style="text-transform: uppercase; margin-bottom: 0" class="tituloSection">Produtos mais acessados</h2>
+                <span style="margin-top: 15px;" class="material-symbols-outlined">ads_click</span>
+        </div>
         <div class="produtosMaisAcessados">
                 <div class="ant">
                     <span class="material-symbols-outlined">navigate_before</span>
@@ -108,10 +112,16 @@
                     }
                 ?>
                 <div class="prox">
-                    <span class="material-symbols-outlined ">navigate_next</span>
+                    <span class="material-symbols-outlined">navigate_next</span>
                 </div>
             </div>
+        <br>
+        <!-- Quando tiver feito session criar uma parte de historico -->
     </section>
-    <script src="js/index.js"></script>
+    <?php 
+        include("includes/footer.php");
+    ?>
+    <script src="js/sliderRec.js"></script>
+    <script src="js/sliderMA.js"></script>
 </body>
 </html>
