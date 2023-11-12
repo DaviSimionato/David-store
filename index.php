@@ -20,7 +20,7 @@
     <title>David'store</title>
 </head>
 <body style="background-color: #D7E1E0;">
-    <?php include("includes/header.php");?>
+    <?php include_once("includes/header.php");?>
     <div class="bannerIntro">
             <img src="imgs/svg/bannerIndex.svg" alt="banner">
     </div>
@@ -125,7 +125,7 @@
         <!-- Quando tiver feito session criar uma parte de historico -->
     </section>
     <?php 
-        include("includes/footer.php");
+        include_once("includes/footer.php");
     ?>
     <script src="js/sliderRec.js"></script>
     <script src="js/sliderMA.js"></script>

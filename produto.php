@@ -4,6 +4,7 @@
     $idProd = $_GET["c"];
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
+    $buscaProdutosSimilares = $bd->query("select * from vwProdutos where categoria = '{$produto->categoria}'");
     if(is_null($produto)) {
         header("Location: index.php");
     }
@@ -21,8 +22,8 @@
     <link rel="stylesheet" href="style.css">
     <title><?php echo $produto->nome;?></title>
 <body style="background-color: #f2f2f2;">
-    <?php include("includes/header.php");?>
-    <section class="produtoInfo container1400">
+    <?php include_once("includes/header.php");?>
+    <section class="sectionProds container1400">
         <?php 
             echo "<p style='font-size: 14px'><strong>Você está em:</strong> {$produto->departamento}
              > {$produto->categoria} > <strong style='color: #e8772e'>Codigo: {$produto->codigo}</strong>";
@@ -31,14 +32,14 @@
         <?php 
             echo "<h2 class='tituloProduto'>{$produto->nome}</h2>";
         ?>
-        <div class="secproduto">
+        <div class="secProduto">
             <div class="produto">
                 <?php 
                 $estrelasNota = '';
-                for($i = 0;$i<$produto->nota;$i++) {
+                for($i = 0;$i<floor($produto->nota);$i++) {
                     $estrelasNota .= '<span class="material-symbols-outlined estrelaCheia">star</span>';
                 }
-                for($i = 0;$i<(5 - $produto->nota);$i++) {
+                for($i = 0;$i<(5 - floor($produto->nota));$i++) {
                     $estrelasNota .= '<span class="material-symbols-outlined estrelaVazia">star</span>';
                 }
                 echo "
@@ -64,13 +65,17 @@
                         <div class='preco'>
                             <h2 class='produtoPreco'>{$produto->precoAvista}</h2>
                             <div class='space'></div>
-                            <p>Em estoque</p>
+                            <p><strong style='color: #1fa342'>Em estoque</strong></p>
                         </div>
-                        <p>À vista com <strong>10% OFF</strong></p>
-                        <p><strong>{$produto->precoParcel}</strong></p>
-                        <p>Em até 12x de <strong>R$$precoParcelReais</strong> sem juros no cartão</p>
-                        <a href='#' class='comprar'>COMPRAR</a>
-                        <a href='#' class='addCarrinho'><span class='material-symbols-outlined'>add_shopping_cart</span></a>
+                        <p style='margin-top:-40px;margin-bottom: 40px;font-size:14px'>
+                            À vista no PIX com <strong>10% OFF</strong>
+                        </p>
+                        <p style='margin-bottom:0'><strong>{$produto->precoParcel}</strong></p>
+                        <p style='margin: 0'>Em até 12x de <strong>R$$precoParcelReais</strong> sem juros no cartão</p>
+                        <div class='btns'>
+                            <a href='#' class='comprar'><span class='material-symbols-outlined'>shopping_cart</span>COMPRAR</a>
+                            <a href='#' class='addCarrinho'><span class='material-symbols-outlined'>add_shopping_cart</span></a>
+                        </div>
                     ";           
                 }else {
                     echo "
@@ -82,6 +87,38 @@
                 ?>
             </div>
         </div>
+        <div class="produtosSimilares">
+            <div class="sectionTopic">
+                    <h2 style="text-transform: uppercase; margin-bottom: 0; font-size:16px" class="tituloSection">Produtos similares</h2>
+                    <span style="margin-top: 15px;" class="material-symbols-outlined">ads_click</span>
+            </div>
+            <div class="prodsSim">
+                <div class="produtoSimilar">
+
+                </div>
+            </div>
+        </div>
     </section>
+    <section class="sectionProds container1400">
+        <div class="descritivo">
+            <div class="sectionTopic">
+                    <h2 style="text-transform: uppercase; margin: 20px 0; padding:0" class="tituloSection">Descrição do produto</h2>
+                    <span style="margin-left:10px" class="material-symbols-outlined">description</span>
+            </div>
+            <?php 
+                echo "{$produto->descritivo}";
+            ?>
+        </div>
+    </section>
+    <section class="sectionProds container1400">
+        <div class="infoTecnica">
+            <?php 
+                echo "{$produto->infoTecnica}";
+            ?>
+        </div>
+    </section>
+    <?php 
+        include_once("includes/footer.php");
+    ?>
 </body>
 </html>
