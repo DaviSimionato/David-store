@@ -1,4 +1,5 @@
 <?php 
+    require_once("includes/login.php");
     require_once("includes/banco.php");
     $buscaProdutosRecomendados = $bd->query("select * from vwProdutosRecomendados");
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 20");

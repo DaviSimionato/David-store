@@ -34,6 +34,9 @@ img {
     user-select: none;
     -webkit-user-drag: none;
 }
+strong {
+    color: #42464D;
+}
 span.material-symbols-outlined {
     user-select: none;
 }
@@ -310,6 +313,12 @@ h2.tituloSection {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 25px;
+    padding-top: 0;
+}
+.tituloProduto {
+    font-size: 24px;
+    font-weight: 700;
 }
 .produto .infoGeral {
     width: 100%;
@@ -321,13 +330,39 @@ h2.tituloSection {
     height: 30px;
     background-color: #7f858d6e;
 }
+.infoGeral .nota {
+    display: flex;
+    align-items: flex-start;
+}
+.infoGeral .nota p {
+    font-size: 13px;
+    color: #7f858d;
+    padding: 3px;
+    margin: 0;
+}
+.infoGeral .nota span {
+    font-size: 22px;
+    color: #E8772E;
+}
+.infoGeral span.fav {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
+}
+.infoGeral .nota span.estrelaCheia {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
 .produto .imagemProduto{
-    height: 320px;
+    height: 360px;
+    padding: 25px;
 }
-.tituloProduto {
-    font-size: 24px;
-    font-weight: 700;
-}
+
 /*Footer*/
 footer {
     width: 100%;

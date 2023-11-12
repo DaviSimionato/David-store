@@ -1,4 +1,5 @@
 <?php 
+    require_once("includes/login.php");
     require_once("includes/banco.php");
     $idProd = $_GET["c"];
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
@@ -30,26 +31,56 @@
         <?php 
             echo "<h2 class='tituloProduto'>{$produto->nome}</h2>";
         ?>
-        <div class="produto">
-            <?php 
-            $estrelasNota = '';
-            for($i = 0;$i<$produto->nota;$i++) {
-                $estrelasNota .= '<span class="material-symbols-outlined class="estrelaCheia">star</span>';
-            }
-            echo "
-                <div class='infoGeral'>
-                    <img src='{$produto->imagemMarca}' alt='{$produto->marca}' width='70' height='28'>
-                    <div class='space'></div>
-                    <div class='nota'>$estrelasNota - {$produto->nota} ({$produto->qtdReviews})</div>
-                    <div class='space'></div>
-                    <a href='#'><span class='material-symbols-outlined fav' title='Adicionar aos favoritos' 
-                    style='color:#7F858D;font-size:30px'>favorite</span></a>
-                </div>
-                <div class='imagemProduto'>
-                    <img src='{$produto->imagemProduto}' alt='$produto->nome' class='imagemProduto'>
-                </div>
-                "; 
-            ?>
+        <div class="secproduto">
+            <div class="produto">
+                <?php 
+                $estrelasNota = '';
+                for($i = 0;$i<$produto->nota;$i++) {
+                    $estrelasNota .= '<span class="material-symbols-outlined estrelaCheia">star</span>';
+                }
+                for($i = 0;$i<(5 - $produto->nota);$i++) {
+                    $estrelasNota .= '<span class="material-symbols-outlined estrelaVazia">star</span>';
+                }
+                echo "
+                    <div class='infoGeral'>
+                        <img src='{$produto->imagemMarca}' alt='{$produto->marca}' width='70' height='28'>
+                        <div class='space'></div>
+                        <div class='nota'>$estrelasNota <p> - {$produto->nota} ({$produto->qtdReviews} Reviews)</p></div>
+                        <div class='space'></div>
+                        <a href='#'><span class='material-symbols-outlined fav' title='Adicionar aos favoritos' 
+                        style='color:#7F858D;font-size:30px'>favorite</span></a>
+                    </div>
+                    <div class='imagemProduto'>
+                        <img src='{$produto->imagemProduto}' alt='$produto->nome' class='imagemProduto'>
+                    </div>
+                    "; 
+                ?>
+            </div>
+            <div class="infoPreco">
+                <?php
+                $precoParcelReais = number_format(floatval($produto->precoOriginal) / 12,2,",",".");
+                if($produto->estoque > 1) {
+                    echo "
+                        <div class='preco'>
+                            <h2 class='produtoPreco'>{$produto->precoAvista}</h2>
+                            <div class='space'></div>
+                            <p>Em estoque</p>
+                        </div>
+                        <p>À vista com <strong>10% OFF</strong></p>
+                        <p><strong>{$produto->precoParcel}</strong></p>
+                        <p>Em até 12x de <strong>R$$precoParcelReais</strong> sem juros no cartão</p>
+                        <a href='#' class='comprar'>COMPRAR</a>
+                        <a href='#' class='addCarrinho'><span class='material-symbols-outlined'>add_shopping_cart</span></a>
+                    ";           
+                }else {
+                    echo "
+                        <span class='material-symbols-outlined erroEstoque'>cancel</span>
+                        <h2 class='produtoSemEstoque'>Desculpe!</h2>
+                        <p>O produto que você está procurando está sem estoque.</p>
+                    "; 
+                }
+                ?>
+            </div>
         </div>
     </section>
 </body>

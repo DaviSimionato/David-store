@@ -8,7 +8,7 @@
             </div>
             <?php 
                 if(isset($_SESSION["user"])) {
-
+                    
                 }else {
                     echo "
                     <div class='entrarOuCad'>
