@@ -298,9 +298,36 @@ h2.tituloSection {
     flex-wrap: wrap;
     justify-content: center;
 }
-
-
-
+/*Produto*/
+.produtoInfo {
+    background-color: #fff;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+.produto {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.produto .infoGeral {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.infoGeral .space {
+    width: 1px;
+    height: 30px;
+    background-color: #7f858d6e;
+}
+.produto .imagemProduto{
+    height: 320px;
+}
+.tituloProduto {
+    font-size: 24px;
+    font-weight: 700;
+}
 /*Footer*/
 footer {
     width: 100%;

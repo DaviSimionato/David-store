@@ -1,7 +1,7 @@
 <?php 
     require_once("includes/banco.php");
     $buscaProdutosRecomendados = $bd->query("select * from vwProdutosRecomendados");
-    $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos limit 20");
+    $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 20");
     $buscaDepartamentos = $bd->query("select * from departamentos");
     $buscaMarcas = $bd->query("select * from vwmarcasRecomendadas limit 6");
 ?>
@@ -32,16 +32,19 @@
                 <div class="ant">
                     <span class="material-symbols-outlined">navigate_before</span>
                 </div>
+                <a href=''></a>
                 <?php 
                     while($prod = $buscaProdutosRecomendados->fetch_object()) {
                         echo "
                         <div class='produtos prodRec' title='{$prod->nome}'>
+                            <a href='produto.php?n={$prod->nome}&c={$prod->codigo}'>
                             <img src='{$prod->imagemProduto}' alt=' width='268' height='162'>
                             <p class='nome'>{$prod->nome}</p>
                             <div class='infoPreco'>
                                 <p class='preco'>{$prod->precoAvista}</p>
                                 <p class='avisoPix'>À vista no PIX</p>
                             </div>
+                            </a>
                             <a href='#' class='comprar'>COMPRAR</a>
                         </div>
                         ";
@@ -100,12 +103,14 @@
                     while($prodMaisAces = $buscaProdutosMaisAces->fetch_object()) {
                         echo "
                         <div class='produtos prodMA' title='{$prodMaisAces->nome}'>
+                            <a href='produto.php?n={$prodMaisAces->nome}&c={$prodMaisAces->codigo}'>
                             <img src='{$prodMaisAces->imagemProduto}' alt=' width='268' height='162'>
                             <p class='nome'>{$prodMaisAces->nome}</p>
                             <div class='infoPreco'>
                                 <p class='preco'>{$prodMaisAces->precoAvista}</p>
                                 <p class='avisoPix'>À vista no PIX</p>
                             </div>
+                            </a>
                             <a href='#' class='comprar'>COMPRAR</a>
                         </div>
                         ";
