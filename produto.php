@@ -102,7 +102,7 @@
     <section class="sectionProds container1400">
         <div class="descritivo">
             <div class="sectionTopic">
-                    <h2 style="text-transform: uppercase; margin: 20px 0; padding:0" class="tituloSection">Descrição do produto</h2>
+                    <h2 style="text-transform: uppercase; margin: 20px 0; padding:0; font-size:20px" class="tituloSection">Descrição do produto</h2>
                     <span style="margin-left:10px" class="material-symbols-outlined">description</span>
             </div>
             <?php 
@@ -111,6 +111,10 @@
         </div>
     </section>
     <section class="sectionProds container1400">
+            <div class="sectionTopic">
+                <h2 style="text-transform: uppercase; margin: 20px 0; padding:0; font-size:20px" class="tituloSection">INFORMAÇÕES TÉCNICAS</h2>
+                <span style="margin-left:10px" class="material-symbols-outlined">info</span>
+            </div>
         <div class="infoTecnica">
             <?php 
                 echo "{$produto->infoTecnica}";

@@ -217,7 +217,6 @@ h2.tituloSection {
     padding: 5px;
     background-color: #E8772E;
     border-radius: 5px;
-    margin-top: 15px;
     font-size: 16px;
     color: #fff;
     font-weight: 700;
@@ -413,7 +412,21 @@ h2.tituloSection {
     height: 360px;
     padding: 25px;
 }
-
+/*Descrição*/
+.descritivo * {
+    font-size: 14px;
+    margin: 5px 0;
+}
+.descritivo h2,h3,strong {
+    font-size: 16px;
+}
+.infoTecnica * {
+    font-size: 14px;
+    margin: 5px 0;
+}
+.infoTecnica h2,h3,strong {
+    font-size: 16px;
+}
 /*Footer*/
 footer {
     width: 100%;
