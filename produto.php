@@ -5,7 +5,7 @@
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
     $buscaProdutosSimilares = $bd->query("select * from vwProdutos where categoria = '{$produto->categoria}'");
-    $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 20");
+    $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
     if(is_null($produto)) {
         header("Location: index.php");
     }
