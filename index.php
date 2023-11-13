@@ -22,7 +22,7 @@
 <body style="background-color: #D7E1E0;">
     <?php include_once("includes/header.php");?>
     <div class="bannerIntro">
-            <img src="imgs/svg/bannerIndex.svg" alt="banner">
+            <a href="pesquisa.php?pesquisa=TV"><img src="imgs/svg/bannerIndex.svg" alt="banner"></a>
     </div>
     <section class="introIndex">
         <div class="container1400"> 
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <img src="imgs/svg/bannerRecomend.svg" alt="banner" class="banner">
+        <a href="pesquisa.php?pesquisa=TV"><img src="imgs/svg/bannerRecomend.svg" alt="banner" class="banner"></a>
         <div class="sectionTopic">
                 <h2 style="text-transform: uppercase;" class="tituloSection">Marcas Recomendadas</h2>
                 <span class="material-symbols-outlined">thumb_up</span>
