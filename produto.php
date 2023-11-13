@@ -5,6 +5,7 @@
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
     $buscaProdutosSimilares = $bd->query("select * from vwProdutos where categoria = '{$produto->categoria}'");
+    $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 20");
     if(is_null($produto)) {
         header("Location: index.php");
     }
@@ -34,19 +35,30 @@
         ?>
         <div class="secProduto">
             <div class="produto">
-                <?php 
+                <?php
+                if($produto->qtdReviews == 1) {
+                    $review = "Review";
+                }else {
+                    $review = "Reviews";
+                }
                 $estrelasNota = '';
                 for($i = 0;$i<floor($produto->nota);$i++) {
                     $estrelasNota .= '<span class="material-symbols-outlined estrelaCheia">star</span>';
                 }
-                for($i = 0;$i<(5 - floor($produto->nota));$i++) {
+                if($produto->nota > floor($produto->nota) + 0.49 && $produto->nota < floor($produto->nota) + 1) {
+                    $estrelasNota .= '<span class="material-symbols-outlined estrelaCheia">star_half</span>';
+                    $notaLength = 4;
+                }else {
+                    $notaLength = 5;
+                }
+                for($i = 0;$i<($notaLength - floor($produto->nota));$i++) {
                     $estrelasNota .= '<span class="material-symbols-outlined estrelaVazia">star</span>';
                 }
                 echo "
                     <div class='infoGeral'>
                         <img src='{$produto->imagemMarca}' alt='{$produto->marca}' width='70' height='28'>
                         <div class='space'></div>
-                        <div class='nota'>$estrelasNota <p> - {$produto->nota} ({$produto->qtdReviews} Reviews)</p></div>
+                        <div class='nota'>$estrelasNota <p> - {$produto->nota} ({$produto->qtdReviews} $review)</p></div>
                         <div class='space'></div>
                         <a href='#'><span class='material-symbols-outlined fav' title='Adicionar aos favoritos' 
                         style='color:#7F858D;font-size:30px'>favorite</span></a>
@@ -121,8 +133,40 @@
             ?>
         </div>
     </section>
+    <section class="sectionProds container1400">
+        <div class="sectionTopic">
+            <h2 style="text-transform: uppercase; margin-bottom: 0" class="tituloSection">Produtos mais acessados</h2>
+            <span style="margin-top: 15px;" class="material-symbols-outlined">ads_click</span>
+        </div>
+        <div class="produtosMaisAcessados">
+                <div class="ant">
+                    <span class="material-symbols-outlined">navigate_before</span>
+                </div>
+                <?php 
+                    while($prodMaisAces = $buscaProdutosMaisAces->fetch_object()) {
+                        echo "
+                            <div class='produtos prodMA' title='{$prodMaisAces->nome}'>
+                                <a href='produto.php?n={$prodMaisAces->nome}&c={$prodMaisAces->codigo}'>
+                                <img src='{$prodMaisAces->imagemProduto}' alt=' width='268' height='162'>
+                                <p class='nome'>{$prodMaisAces->nome}</p>
+                                <div class='infoPreco'>
+                                    <p class='preco'>{$prodMaisAces->precoAvista}</p>
+                                    <p class='avisoPix'>À vista no PIX</p>
+                                </div>
+                                </a>
+                                <a href='#' class='comprar'>COMPRAR</a>
+                            </div>
+                            ";
+                        }
+                    ?>
+                <div class="prox">
+                    <span class="material-symbols-outlined">navigate_next</span>
+                </div>
+            </div>
+    </section>
     <?php 
         include_once("includes/footer.php");
     ?>
+    <script src="js/sliderMA.js"></script>
 </body>
 </html>

@@ -97,12 +97,12 @@
                 <span style="margin-top: 15px;" class="material-symbols-outlined">ads_click</span>
         </div>
         <div class="produtosMaisAcessados">
-                <div class="ant">
-                    <span class="material-symbols-outlined">navigate_before</span>
-                </div>
-                <?php 
-                    while($prodMaisAces = $buscaProdutosMaisAces->fetch_object()) {
-                        echo "
+            <div class="ant">
+                <span class="material-symbols-outlined">navigate_before</span>
+            </div>
+            <?php 
+                while($prodMaisAces = $buscaProdutosMaisAces->fetch_object()) {
+                    echo "
                         <div class='produtos prodMA' title='{$prodMaisAces->nome}'>
                             <a href='produto.php?n={$prodMaisAces->nome}&c={$prodMaisAces->codigo}'>
                             <img src='{$prodMaisAces->imagemProduto}' alt=' width='268' height='162'>
@@ -117,10 +117,10 @@
                         ";
                     }
                 ?>
-                <div class="prox">
-                    <span class="material-symbols-outlined">navigate_next</span>
-                </div>
+            <div class="prox">
+                <span class="material-symbols-outlined">navigate_next</span>
             </div>
+        </div>
         <br>
         <!-- Quando tiver feito session criar uma parte de historico -->
     </section>
