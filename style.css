@@ -412,6 +412,10 @@ h2.tituloSection {
     height: 360px;
     padding: 25px;
 }
+/*Produtos similares*/
+.prodsSim {
+    display: flex;
+}
 /*Descrição*/
 .descritivo * {
     font-size: 14px;
@@ -420,6 +424,7 @@ h2.tituloSection {
 .descritivo h2,h3,strong {
     font-size: 16px;
 }
+/*Info tecnica*/
 .infoTecnica * {
     font-size: 14px;
     margin: 5px 0;

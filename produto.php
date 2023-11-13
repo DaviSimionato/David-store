@@ -4,7 +4,7 @@
     $idProd = $_GET["c"];
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
-    $buscaProdutosSimilares = $bd->query("select * from vwProdutos where categoria = '{$produto->categoria}'");
+    $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}");
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
     if(is_null($produto)) {
         header("Location: index.php");
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
     <title><?php echo $produto->nome;?></title>
+</head>
 <body style="background-color: #f2f2f2;">
     <?php include_once("includes/header.php");?>
     <section class="sectionProds container1400">
@@ -102,11 +103,17 @@
         <div class="produtosSimilares">
             <div class="sectionTopic">
                     <h2 style="text-transform: uppercase; margin-bottom: 0; font-size:16px" class="tituloSection">Produtos similares</h2>
-                    <span style="margin-top: 15px;" class="material-symbols-outlined">ads_click</span>
+                    <span style="margin-top: 15px;" class="material-symbols-outlined">search</span>
             </div>
             <div class="prodsSim">
                 <div class="produtoSimilar">
-
+                    <?php
+                        while($prodSimilar = $buscaProdutosSimilares->fetch_object()) {
+                            echo "
+                                <img src='{$prodSimilar->imagemProduto}' width='120'>
+                                <p>{$prodSimilar->precoAvista}</p>";
+                        } 
+                    ?>
                 </div>
             </div>
         </div>
