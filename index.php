@@ -66,8 +66,10 @@
                 while($marca = $buscaMarcas->fetch_object()) {
                     echo "
                         <div class='marca'>
+                            <a href='pesquisa.php?pesquisa={$marca->nome}'>
                             <h2>{$marca->nome}</h2>
                             <img src='{$marca->foto}' alt='{$marca->nome}'>
+                            </a>
                         </div>
                     ";
                 }

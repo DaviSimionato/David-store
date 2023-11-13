@@ -421,6 +421,7 @@ h2.tituloSection {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 15px;
 }
 .prodsSim .produtoSimilar {
     display: flex;
@@ -432,6 +433,10 @@ h2.tituloSection {
     font-size: 16px;
     font-weight: 700;
     color: #E8772E;
+    text-align: center;
+}
+a.categ:hover {
+    text-decoration: underline;
 }
 /*Descrição*/
 .descritivo * {

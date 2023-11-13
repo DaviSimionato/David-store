@@ -2,7 +2,7 @@
     require_once("includes/login.php");
     require_once("includes/banco.php");
     $pesquisa = $_GET["pesquisa"] ?? "";
-    $buscaPesquisa = $bd->query("select * from vwProdutos where nome like '%$pesquisa%' or categoria like'%$pesquisa%' 
+    $buscaPesquisa = $bd->query("select * from vwProdutos where categoria like'%$pesquisa%' or nome like '%$pesquisa%' 
     or departamento like'%$pesquisa%' or marca like '%$pesquisa%'");
 ?>
 <!DOCTYPE html>

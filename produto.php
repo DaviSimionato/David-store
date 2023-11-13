@@ -5,7 +5,7 @@
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
     $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}
-    and codigo != {$produto->codigo} limit 8");
+    and codigo != {$produto->codigo} limit 9");
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
     if(is_null($produto)) {
         header("Location: index.php");
@@ -109,7 +109,9 @@
             <?php 
                 echo "
                 <p style='padding-left:10px;margin:0;margin-top: -15px;font-size:12px;font-wheight:200'>Categoria: 
-                <strong style='font-size:12px'>{$produto->categoria}</strong></p>";
+                <strong style='font-size:12px'><a href='pesquisa.php?pesquisa={$produto->categoria}' class='categ'>
+                    {$produto->categoria}
+                </a></strong></p>";
             ?>
             <div class="prodsSim">
                 <?php
@@ -117,7 +119,7 @@
                         echo "
                         <div class='produtoSimilar' title='{$prodSimilar->nome}'>
                             <a href='produto.php?n={$prodSimilar->nome}&c={$prodSimilar->codigo}'>
-                                <img src='{$prodSimilar->imagemProduto}' width='120'>
+                                <img src='{$prodSimilar->imagemProduto}' width='100'>
                                 <p>{$prodSimilar->precoAvista}</p>
                             </a>
                         </div>";
