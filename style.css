@@ -409,12 +409,25 @@ h2.tituloSection {
     'opsz' 24;
 }
 .produto .imagemProduto{
-    height: 360px;
+    max-height: 360px;
     padding: 25px;
 }
 /*Produtos similares*/
 .prodsSim {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.prodsSim .produtoSimilar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.prodsSim .produtoSimilar p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #E8772E;
 }
 /*Descrição*/
 .descritivo * {

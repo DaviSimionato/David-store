@@ -4,7 +4,8 @@
     $idProd = $_GET["c"];
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
-    $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}");
+    $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}
+    and codigo != {$produto->codigo} limit 8");
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
     if(is_null($produto)) {
         header("Location: index.php");
@@ -100,21 +101,28 @@
                 ?>
             </div>
         </div>
-        <div class="produtosSimilares">
+        <div class="produtosSimilares container1330">
             <div class="sectionTopic">
-                    <h2 style="text-transform: uppercase; margin-bottom: 0; font-size:16px" class="tituloSection">Produtos similares</h2>
+                    <h2 style="text-transform: uppercase; margin-bottom: 0;margin-left:0; font-size:16px" class="tituloSection">Produtos similares</h2>
                     <span style="margin-top: 15px;" class="material-symbols-outlined">search</span>
             </div>
+            <?php 
+                echo "
+                <p style='padding-left:10px;margin:0;margin-top: -15px;font-size:12px;font-wheight:200'>Categoria: 
+                <strong style='font-size:12px'>{$produto->categoria}</strong></p>";
+            ?>
             <div class="prodsSim">
-                <div class="produtoSimilar">
-                    <?php
-                        while($prodSimilar = $buscaProdutosSimilares->fetch_object()) {
-                            echo "
+                <?php
+                    while($prodSimilar = $buscaProdutosSimilares->fetch_object()) {
+                        echo "
+                        <div class='produtoSimilar' title='{$prodSimilar->nome}'>
+                            <a href='produto.php?n={$prodSimilar->nome}&c={$prodSimilar->codigo}'>
                                 <img src='{$prodSimilar->imagemProduto}' width='120'>
-                                <p>{$prodSimilar->precoAvista}</p>";
-                        } 
-                    ?>
-                </div>
+                                <p>{$prodSimilar->precoAvista}</p>
+                            </a>
+                        </div>";
+                    } 
+                ?>  
             </div>
         </div>
     </section>
@@ -175,5 +183,6 @@
         include_once("includes/footer.php");
     ?>
     <script src="js/sliderMA.js"></script>
+    <script src="js/completarSimilar.js"></script>
 </body>
 </html>
