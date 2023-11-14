@@ -21,7 +21,6 @@
 </head>
 <body style="background-color: #D7E1E0;">
     <?php 
-        include_once("includes/menuLateral.php");
         include_once("includes/header.php");
     ?>
     <div class="bannerIntro">

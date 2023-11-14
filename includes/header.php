@@ -1,3 +1,4 @@
+<?php include_once("menuLateral.php");?>
 <header>
         <div class="header">
             <span class="material-symbols-outlined menuLateral">menu</span>
@@ -5,7 +6,7 @@
             <div class="barraPesquisa">
                 <form action="pesquisa.php" method="get" autocomplete="off">
                     <input type="text" name="pesquisa" class="pesqBar" placeholder="Busque aqui">
-                    <a href="#"><span class="material-symbols-outlined" title="Pesquisar">search</span></a>
+                    <a href="submit"><span class="material-symbols-outlined" title="Pesquisar">search</span></a>
                 </form>
             </div>
             <?php 
@@ -25,4 +26,5 @@
                 <a href="#"><span class="material-symbols-outlined" title="Carrinho">shopping_cart</span></a>
             </div>
         </div>
+        <script src="js/menuLateral.js"></script>
 </header>

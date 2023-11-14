@@ -1,4 +1,4 @@
-<div class="mLateral aberto">
+<div class="mLateral">
     <div class="menuLateralOpen">
         <div class="ola">
             <?php 
@@ -8,7 +8,7 @@
                     echo "<h2>Olá. Faça seu login</h2>";
                 }
             ?>
-            <span style="color: #fff;font-size:40px;" class="material-symbols-outlined">close</span>
+            <span style="color: #fff;font-size:40px;" class="material-symbols-outlined fechaMenu">close</span>
         </div>
     </div>
     <div class="menuLateralOverlay">
