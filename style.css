@@ -249,6 +249,7 @@ h2.tituloSection {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    text-align: center;
 }
 .marcasRecomendadas .marca {
     display: flex;
@@ -272,14 +273,15 @@ h2.tituloSection {
     font-size: 1em;
     text-transform: uppercase;
 }
-.marcasRecomendadas a {
+.marcasRecomendadas p.btn {
     padding: 5px;
     background-color: #E8772E;
     border-radius: 5px;
-    margin-top: 15px;
+    margin-top: 35px;
     font-size: 16px;
     color: #fff;
     font-weight: 700;
+    margin-bottom: 0;
 }
 /*Departamentos*/
 .departamentos {

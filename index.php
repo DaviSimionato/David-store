@@ -69,6 +69,7 @@
                             <a href='pesquisa.php?pesquisa={$marca->nome}'>
                             <h2>{$marca->nome}</h2>
                             <img src='{$marca->foto}' alt='{$marca->nome}'>
+                            <p class='btn'>Ver Produtos</p>
                             </a>
                         </div>
                     ";
@@ -84,7 +85,7 @@
                 while($dep = $buscaDepartamentos->fetch_object()) {
                     echo "
                         <div class='departamento'>
-                            <a href='#'>
+                            <a href='pesquisa.php?pesquisa={$dep->departamento}'>
                             <h2>{$dep->departamento}</h2>
                             <img src='{$dep->foto}' alt='{$dep->departamento}'>
                             </a>
@@ -93,7 +94,7 @@
                 }
             ?>
         </div>
-        <img src="imgs/svg/bannerAcer.svg" alt="banner" class="banner">
+        <a href="pesquisa.php"><img src="imgs/svg/bannerAcer.svg" alt="banner" class="banner"></a>
         <div class="sectionTopic">
                 <h2 style="text-transform: uppercase; margin-bottom: 0" class="tituloSection">Produtos mais acessados</h2>
                 <span style="margin-top: 15px;" class="material-symbols-outlined">ads_click</span>
