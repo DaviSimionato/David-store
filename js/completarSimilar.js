@@ -1,8 +1,14 @@
 const produtosSimilaresContainer = document.querySelector(".prodsSim");
-const prodsSimilares = produtosSimilaresContainer.querySelectorAll(".produtoSimilar");
+const prodsSimilares = document.querySelectorAll(".produtoSimilar");
+let tamanho = prodsSimilares.length;
+let i = 0;
 
-if(prodsSimilares.length < 9) {
-    for(let i=0;i<(9-prodsSimilares.length);i++) {
-        produtosSimilaresContainer.innerHTML+= prodsSimilares[i].outerHTML; 
+while(tamanho < 9) {
+    if(i == (prodsSimilares.length - 1)) {
+        i=0;
+    }else {
+        i++;
     }
+    produtosSimilaresContainer.innerHTML+= prodsSimilares[i].outerHTML;
+    tamanho++;
 }

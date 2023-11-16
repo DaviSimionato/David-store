@@ -1,7 +1,7 @@
 <?php 
     $departamentosLateral = $bd->query("select * from departamentos");
 ?>
-<div class="mLateral aberto">
+<div class="mLateral">
     <div class="menuLateralOpen">
         <div class="ola">
             <?php 
@@ -43,6 +43,12 @@
                 echo "
                 <div class='btnEntrar'>
                     <a href='entrar.php' style='text-transform: uppercase;'>Entrar</a>
+                </div>
+                ";
+            }else {
+                echo "
+                <div class='btnEntrar'>
+                    <a href='entrar.php' style='text-transform: uppercase;'>Sair</a>
                 </div>
                 ";
             }
