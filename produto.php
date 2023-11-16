@@ -28,8 +28,10 @@
     <?php include_once("includes/header.php");?>
     <section class="sectionProds container1400">
         <?php 
-            echo "<p style='font-size: 14px'><strong>Você está em:</strong> {$produto->departamento}
-             > {$produto->categoria} > <strong style='color: #e8772e'>Codigo: {$produto->codigo}</strong>";
+            echo "<p style='font-size: 14px'><strong>Você está em:</strong> 
+                <a href='pesquisa.php?departamento={$produto->departamento}'>{$produto->departamento}</a> > 
+                <a href='pesquisa.php?categoria={$produto->categoria}'>{$produto->categoria}</a> > 
+                <strong style='color: #e8772e'>Codigo: {$produto->codigo}</strong>";
         ?>
         <hr>
         <?php 

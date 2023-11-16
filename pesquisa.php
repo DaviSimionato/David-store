@@ -2,6 +2,7 @@
     require_once("includes/login.php");
     require_once("includes/banco.php");
     $departamento = $_GET["departamento"] ?? "";
+    $categoria = $_GET["categoria"] ?? "";
     $pesquisa = $_GET["pesquisa"] ?? "";
     $marca = $_GET["marca"] ?? "";
     if(!empty($pesquisa)) {
@@ -16,6 +17,10 @@
     if(!empty($marca)) {
         $buscaPesquisa = $bd->query("select * from vwProdutos where marca = '$marca'");  
         $termoPesquisa = $marca;
+    }
+    if(!empty($categoria)) {
+        $buscaPesquisa = $bd->query("select * from vwProdutos where categoria = '$categoria'");  
+        $termoPesquisa = $categoria;
     }
 ?>
 <!DOCTYPE html>
