@@ -22,9 +22,6 @@
                         <li class='departamentoMenuLateral'>
                             <div class='depNome'>
                                 <p>{$dep->departamento}</p>
-                                <span style='' class='material-symbols-outlined setaDepartamentos'>
-                                    expand_more
-                                </span>
                             </div>";
                         $categoriasLateral = $bd->query("select * from categorias where idDepartamento = {$dep->idDepartamento}");
                         while($cat = $categoriasLateral->fetch_object()) {
