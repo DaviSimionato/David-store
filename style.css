@@ -3,8 +3,6 @@
     font-family: "Poppins", sans-serif;
     color: #222;
     list-style: none;
-}
-* {
     scrollbar-width: auto;
     scrollbar-color: #e8772e #ffffff;
 }
@@ -558,8 +556,36 @@ a.categ:hover {
 }
 /*Pagina de pesquisa*/
 .produtosResultados {
-    display: grid;
+    display: flex;
 }
+.produtosResultados .filtro {
+    min-width: 200px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 10px 0;
+    margin-right: 25px;
+}
+.produtosResultados .filtro label{
+    display: block;
+}
+.produtosResultados .filtro input {
+    width: 100%;
+}
+.produtosResultados .produtosList {
+    display: flex;
+    flex-wrap: wrap;
+}
+body:has(.footerPesquisa) {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.footerPesquisa {
+    margin: auto 0;
+    margin-bottom: 0;
+}
+
 /*Footer*/
 footer {
     width: 100%;

@@ -8,18 +8,34 @@
     if(!empty($pesquisa)) {
         $buscaPesquisa = $bd->query("select * from vwProdutos where categoria like'%$pesquisa%' or nome like '%$pesquisa%' 
         or departamento like'%$pesquisa%' or marca like '%$pesquisa%'");
+        $menorPreco = $bd->query("select min(precoAvistaVlr) as 'mp' from vwprodutos where categoria like'%$pesquisa%' 
+        or nome like '%$pesquisa%' or departamento like'%$pesquisa%' or marca like '%$pesquisa%'")->fetch_object();
+        $maiorPreco = $bd->query("select max(precoAvistaVlr) as 'mp' from vwprodutos where categoria like'%$pesquisa%' 
+        or nome like '%$pesquisa%' or departamento like'%$pesquisa%' or marca like '%$pesquisa%'")->fetch_object();
         $termoPesquisa = $pesquisa;
     }
     if(!empty($departamento)) {
-        $buscaPesquisa = $bd->query("select * from vwProdutos where departamento = '$departamento'");  
+        $buscaPesquisa = $bd->query("select * from vwProdutos where departamento = '$departamento' or nome like '%$departamento%'");
+        $menorPreco = $bd->query("select min(precoAvistaVlr) as 'mp' from vwprodutos where departamento = '$departamento' 
+        or nome like '%$departamento%'")->fetch_object();  
+        $maiorPreco = $bd->query("select max(precoAvistaVlr) as 'mp' from vwprodutos where departamento = '$departamento' 
+        or nome like '%$departamento%'")->fetch_object();  
         $termoPesquisa = $departamento;
     }
     if(!empty($marca)) {
-        $buscaPesquisa = $bd->query("select * from vwProdutos where marca = '$marca'");  
+        $buscaPesquisa = $bd->query("select * from vwProdutos where marca = '$marca' or nome like '%$marca%'");
+        $menorPreco = $bd->query("select min(precoAvistaVlr) as 'mp' from vwprodutos where marca = '$marca' 
+        or nome like '%$marca%'")->fetch_object();
+        $maiorPreco = $bd->query("select max(precoAvistaVlr) as 'mp' from vwprodutos where marca = '$marca' 
+        or nome like '%$marca%'")->fetch_object();    
         $termoPesquisa = $marca;
     }
     if(!empty($categoria)) {
-        $buscaPesquisa = $bd->query("select * from vwProdutos where categoria = '$categoria'");  
+        $buscaPesquisa = $bd->query("select * from vwProdutos where categoria = '$categoria' or nome like '%$categoria%'");
+        $menorPreco = $bd->query("select min(precoAvistaVlr) as 'mp' from vwprodutos where categoria = '$categoria' 
+        or nome like '%$categoria%'")->fetch_object();
+        $maiorPreco = $bd->query("select max(precoAvistaVlr) as 'mp' from vwprodutos where categoria = '$categoria' 
+        or nome like '%$categoria%'")->fetch_object();    
         $termoPesquisa = $categoria;
     }
 ?>
@@ -45,10 +61,16 @@
         <hr>
     <div class="produtosResultados">
         <div class="filtro">
-                <label for="precoMin">Preço mínimo</label>
-                <input type="range" name="precoMin" class="precoMin">
-                <label for="precoMax">Preço máximo</label>
-                <input type="range" name="precoMax" class="precoMax">
+                <?php 
+                    echo "
+                        <label for='precoMin'>Preço mínimo: {$menorPreco->mp}</label>
+                        <input type='range' name='precoMin' class='precoMin' min='{$menorPreco->mp}' 
+                        max='{$maiorPreco->mp}' value='{$menorPreco->mp}'>
+                        <label for='precoMax'>Preço máximo: {$maiorPreco->mp}</label>
+                        <input type='range' name='precoMax' class='precoMax' min='{$menorPreco->mp}' 
+                        max='{$maiorPreco->mp}' value='{$maiorPreco->mp}'>
+                    ";
+                ?>
             </div>
             <div class="produtosList">
                 <?php 
@@ -70,6 +92,11 @@
                 ?>
             </div>
        </div>
+    </div>
+    <div class="footerPesquisa">
+        <?php 
+            include_once("includes/footer.php");
+        ?>
     </div>
 </body>
 </html>
