@@ -43,31 +43,33 @@
             echo "<h2 style='font-size:1.25em'>Resultados da pesquisa: $termoPesquisa</h2>"
         ?>
         <hr>
+    <div class="produtosResultados">
         <div class="filtro">
-            <label for="precoMin">Preço mínimo</label>
-            <input type="range" name="precoMin" class="precoMin">
-            <label for="precoMax">Preço máximo</label>
-            <input type="range" name="precoMax" class="precoMax">
-        </div>
-        <div class="produtosList">
-            <?php 
-                while($prod = $buscaPesquisa->fetch_object()) {
-                    echo "
-                    <div class='produtos prodRec' title='{$prod->nome}'>
-                        <a href='produto.php?n={$prod->nome}&c={$prod->codigo}'>
-                        <img src='{$prod->imagemProduto}' alt=' width='268' height='162'>
-                        <p class='nome'>{$prod->nome}</p>
-                        <div class='infoPreco'>
-                            <p class='preco'>{$prod->precoAvista}</p>
-                            <p class='avisoPix'>À vista no PIX</p>
+                <label for="precoMin">Preço mínimo</label>
+                <input type="range" name="precoMin" class="precoMin">
+                <label for="precoMax">Preço máximo</label>
+                <input type="range" name="precoMax" class="precoMax">
+            </div>
+            <div class="produtosList">
+                <?php 
+                    while($prod = $buscaPesquisa->fetch_object()) {
+                        echo "
+                        <div class='produtos prodPesq' title='{$prod->nome}'>
+                            <a href='produto.php?n={$prod->nome}&c={$prod->codigo}'>
+                            <img src='{$prod->imagemProduto}' alt=' width='268' height='162'>
+                            <p class='nome'>{$prod->nome}</p>
+                            <div class='infoPreco'>
+                                <p class='preco'>{$prod->precoAvista}</p>
+                                <p class='avisoPix'>À vista no PIX</p>
+                            </div>
+                            </a>
+                            <a href='#' class='comprar'>COMPRAR</a>
                         </div>
-                        </a>
-                        <a href='#' class='comprar'>COMPRAR</a>
-                    </div>
-                    ";
-                }
-            ?>
-        </div>
+                        ";
+                    }
+                ?>
+            </div>
+       </div>
     </div>
 </body>
 </html>
