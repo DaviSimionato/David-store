@@ -556,6 +556,10 @@ a.categ:hover {
 .infoTecnica h2,h3,strong {
     font-size: 16px;
 }
+/*Pagina de pesquisa*/
+.produtosResultados {
+    display: grid;
+}
 /*Footer*/
 footer {
     width: 100%;
