@@ -1,31 +1,16 @@
 <?php 
     require_once("includes/login.php");
     require_once("includes/banco.php");
-    $departamento = $_GET["departamento"] ?? "";
-    $categoria = $_GET["categoria"] ?? "";
     $pesquisa = $_GET["pesquisa"] ?? "";
-    $marca = $_GET["marca"] ?? "";
+    $ord = $_GET["ord"] ?? "codigo";
     if(!empty($pesquisa)) {
         $buscaPesquisa = $bd->query("select * from vwProdutos where categoria like'%$pesquisa%' or nome like '%$pesquisa%' 
-        or departamento like'%$pesquisa%' or marca like '%$pesquisa%'");
-        $termoPesquisa = $pesquisa;
+        or departamento like'%$pesquisa%' or marca like '%$pesquisa%' order by $ord");
     }
-    if(!empty($departamento)) {
-        $buscaPesquisa = $bd->query("select * from vwProdutos where departamento = '$departamento' or nome like '%$departamento%'");
-        $termoPesquisa = $departamento;
-    }
-    if(!empty($marca)) {
-        $buscaPesquisa = $bd->query("select * from vwProdutos where marca = '$marca' or nome like '%$marca%'"); 
-        $termoPesquisa = $marca;
-    }
-    if(!empty($categoria)) {
-        $buscaPesquisa = $bd->query("select * from vwProdutos where categoria = '$categoria' or nome like '%$categoria%'");  
-        $termoPesquisa = $categoria;
-    }
-    $menorPreco = $bd->query("select min(precoOriginal) as 'mp' from vwProdutos where categoria like'%$termoPesquisa%' or nome like '%$termoPesquisa%' 
-    or departamento like'%$termoPesquisa%' or marca like '%$termoPesquisa%'")->fetch_object()->mp;
-    $maiorPreco = $bd->query("select max(precoOriginal) as 'mp' from vwProdutos where categoria like'%$termoPesquisa%' or nome like '%$termoPesquisa%' 
-    or departamento like'%$termoPesquisa%' or marca like '%$termoPesquisa%'")->fetch_object()->mp;
+    $menorPreco = $bd->query("select min(precoOriginal) as 'mp' from vwProdutos where categoria like'%$pesquisa%' or nome like '%$pesquisa%' 
+    or departamento like'%$pesquisa%' or marca like '%$pesquisa%'")->fetch_object()->mp;
+    $maiorPreco = $bd->query("select max(precoOriginal) as 'mp' from vwProdutos where categoria like'%$pesquisa%' or nome like '%$pesquisa%' 
+    or departamento like'%$pesquisa%' or marca like '%$pesquisa%'")->fetch_object()->mp;
     $menorPreco = $menorPreco - ($menorPreco * 0.1); 
     $maiorPreco = $maiorPreco - ($maiorPreco * 0.1); 
 ?>
@@ -40,13 +25,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
-    <title><?php echo "Busca por $termoPesquisa";?></title>
+    <title><?php echo "Busca por $pesquisa";?></title>
 </head>
 <body style="background-color: #F2F3F4;">
     <?php include_once("includes/header.php") ?>
     <div class="resultadoPesquisa container1400">
         <?php 
-            echo "<h2 style='font-size:1.25em'>Resultados da pesquisa: $termoPesquisa</h2>"
+            echo "<h2 style='font-size:1.25em'>Resultados da pesquisa: $pesquisa</h2>"
         ?>
         <hr>
     <div class="produtosResultados">
@@ -63,25 +48,41 @@
                     ";
                 ?>
             </div>
-            <div class="produtosList">
-                <?php 
-                    while($prod = $buscaPesquisa->fetch_object()) {
-                        echo "
-                        <div class='produtos prodPesq' title='{$prod->nome}'>
-                            <a href='produto.php?n={$prod->nome}&c={$prod->codigo}'>
-                            <img src='{$prod->imagemProduto}' alt=' width='268' height='162'>
-                            <p class='nome'>{$prod->nome}</p>
-                            <div class='infoPreco'>
-                                <p class='preco'>{$prod->precoAvista}</p>
-                                <p class='avisoPix'>À vista no PIX</p>
-                                <p style='display:none' class='prcOcult'>{$prod->precoOriginal}</p>
+            <div class="resultados">
+                <div class="ordenarLista">
+                    <span style="color: #E8772E;margin-left:15px" class="material-symbols-outlined">swap_vert</span>
+                    <p><strong>Ordenar por: </strong></p>
+                    <div class="ordOptions">
+                        <?php 
+                            echo "
+                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=codigo'}>Nada | </a>
+                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=precoOriginal'>Menor preço | </a>
+                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=precoOriginal desc'>Maior preço | </a>
+                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=acessos'>Acessos</a>
+                            ";
+                        ?>
+                    </div>
+                </div>
+                <div class="produtosList">
+                    <?php 
+                        while($prod = $buscaPesquisa->fetch_object()) {
+                            echo "
+                            <div class='produtos prodPesq' title='{$prod->nome}'>
+                                <a href='produto.php?n={$prod->nome}&c={$prod->codigo}'>
+                                <img src='{$prod->imagemProduto}' alt=' width='268' height='162'>
+                                <p class='nome'>{$prod->nome}</p>
+                                <div class='infoPreco'>
+                                    <p class='preco'>{$prod->precoAvista}</p>
+                                    <p class='avisoPix'>À vista no PIX</p>
+                                    <p style='display:none' class='prcOcult'>{$prod->precoOriginal}</p>
+                                </div>
+                                </a>
+                                <a href='#' class='comprar'>COMPRAR</a>
                             </div>
-                            </a>
-                            <a href='#' class='comprar'>COMPRAR</a>
-                        </div>
-                        ";
-                    }
-                ?>
+                            ";
+                        }
+                    ?>
+                </div>
             </div>
        </div>
     </div>

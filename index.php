@@ -24,7 +24,7 @@
         include_once("includes/header.php");
     ?>
     <div class="bannerIntro">
-            <a href="pesquisa.php?departamento=TV"><img src="imgs/svg/bannerIndex.svg" alt="banner"></a>
+            <a href="pesquisa.php?pesquisa=TV"><img src="imgs/svg/bannerIndex.svg" alt="banner"></a>
     </div>
     <section class="introIndex">
         <div class="container1400"> 
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <a href="pesquisa.php?departamento=TV"><img src="imgs/svg/bannerRecomend.svg" alt="banner" class="banner"></a>
+        <a href="pesquisa.php?pesquisa=TV"><img src="imgs/svg/bannerRecomend.svg" alt="banner" class="banner"></a>
         <div class="sectionTopic">
                 <h2 style="text-transform: uppercase;" class="tituloSection">Marcas Recomendadas</h2>
                 <span class="material-symbols-outlined">thumb_up</span>
@@ -68,7 +68,7 @@
                 while($marca = $buscaMarcas->fetch_object()) {
                     echo "
                         <div class='marca'>
-                            <a href='pesquisa.php?marca={$marca->nome}'>
+                            <a href='pesquisa.php?pesquisa={$marca->nome}'>
                             <h2>{$marca->nome}</h2>
                             <img src='{$marca->foto}' alt='{$marca->nome}'>
                             <p class='btn'>Ver Produtos</p>
@@ -87,7 +87,7 @@
                 while($dep = $buscaDepartamentos->fetch_object()) {
                     echo "
                         <div class='departamento'>
-                            <a href='pesquisa.php?departamento={$dep->departamento}'>
+                            <a href='pesquisa.php?pesquisa={$dep->departamento}'>
                             <h2>{$dep->departamento}</h2>
                             <img src='{$dep->foto}' alt='{$dep->departamento}'>
                             </a>
@@ -96,7 +96,7 @@
                 }
             ?>
         </div>
-        <a href="pesquisa.php?departamento=TV"><img src="imgs/svg/bannerAcer.svg" alt="banner" class="banner"></a>
+        <a href="pesquisa.php?pesquisa=TV"><img src="imgs/svg/bannerAcer.svg" alt="banner" class="banner"></a>
         <div class="sectionTopic">
                 <h2 style="text-transform: uppercase; margin-bottom: 0" class="tituloSection">Produtos mais acessados</h2>
                 <span style="margin-top: 15px;" class="material-symbols-outlined">ads_click</span>

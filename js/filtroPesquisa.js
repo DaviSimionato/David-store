@@ -16,8 +16,8 @@ produtosPrecos.forEach((preco,i)=> {
 });
 
 function exibirPrecosMinMax() {
-    menorPrecoFiltro.label.innerHTML = `Preço mínimo: <strong><br>R$${menorPrecoFiltro.input.value}</strong>`;
-    maiorPrecoFiltro.label.innerHTML = `Preço máximo: <strong><br>R$${maiorPrecoFiltro.input.value}</strong>`;
+    menorPrecoFiltro.label.innerHTML = `Preço mínimo: <strong><br>R$${parseFloat(menorPrecoFiltro.input.value).toFixed(2)}</strong>`;
+    maiorPrecoFiltro.label.innerHTML = `Preço máximo: <strong><br>R$${parseFloat(maiorPrecoFiltro.input.value).toFixed(2)}</strong>`;
 }
 function filtrarProdutos() {
     precosAvista.forEach((preco,i)=> {
@@ -38,4 +38,5 @@ btnAplicar.addEventListener("click",()=> {
     btnAplicar.style.display = "none";
     filtrarProdutos();
 });
+exibirPrecosMinMax();
 

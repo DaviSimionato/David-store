@@ -16,7 +16,7 @@
                     echo "
                     <div class='entrarOuCad'>
                         <span class='material-symbols-outlined'>account_circle</span>
-                        <p><strong><a href='#'>Entrar</a></strong> ou <strong><a href='#'>Cadastre-se</a></strong></p>
+                        <p><strong><a href='entrar.php'>Entrar</a></strong> ou <strong><a href='cadastro.php'>Cadastre-se</a></strong></p>
                     </div>
                     ";
                 }
