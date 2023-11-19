@@ -55,10 +55,11 @@
                     <div class="ordOptions">
                         <?php 
                             echo "
-                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=codigo'}>Nada | </a>
-                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=precoOriginal'>Menor preço | </a>
-                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=precoOriginal desc'>Maior preço | </a>
-                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=acessos'>Acessos</a>
+                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=codigo'}' class='codigo'>Nada | </a>
+                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=precoOriginal' class='precoOriginal'>Menor preço | </a>
+                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=precoOriginal desc' class='precoOriginal desc'>Maior preço | </a>
+                                <a href='pesquisa.php?pesquisa=$pesquisa&ord=acessos' class='acessos'>Acessos</a>
+                                <p style='display:none' class='valorOrd'>$ord</p>
                             ";
                         ?>
                     </div>
@@ -92,5 +93,6 @@
         ?>
     </div>
     <script src="js/filtroPesquisa.js"></script>
+    <script src="js/showOrd.js"></script>
 </body>
 </html>

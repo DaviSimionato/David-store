@@ -608,6 +608,9 @@ a.categ:hover {
     font-size: 14px;
     font-weight: 600;
 }
+.ordenarLista .ordOptions a.ativo {
+    color: #E8772E;
+}
 .produtosResultados .produtosList {
     display: flex;
     flex-wrap: wrap;
