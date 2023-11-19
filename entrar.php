@@ -15,9 +15,17 @@
     <link rel="stylesheet" href="style.css">
     <title>Entrar</title>
 </head>
-<body>
+<body style="background-color: #F2F3F4;">
     <?php 
         include_once("includes/header.php");
     ?>
+    <form action="login.php" method="post">
+        
+    </form>
+    <div class="footerPesquisa">
+        <?php 
+            include_once("includes/footer.php");
+        ?>
+    </div>
 </body>
 </html>
