@@ -12,7 +12,7 @@ function formatCPF() {
     inputCPF.value = formattedCPF;
 }
 inputTelefone.addEventListener("keydown",(e)=> {
-    if(inputTelefone.value.length >= 11) {
+    if(inputTelefone.value.length >= 10) {
         formatTel();
     }else {
         inputTelefone.value = inputTelefone.value.trim();
