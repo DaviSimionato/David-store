@@ -572,9 +572,30 @@ a.categ:hover {
 .produtosResultados .filtro input {
     width: 100%;
 }
+.produtosResultados .filtro input:hover {
+    cursor: grab;
+}
+.produtosResultados .filtro input:active {
+    cursor: grabbing;
+}
+.produtosResultados .filtro .btnAplicar {
+    background-color: #0079E9;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    user-select: none;
+}
+.produtosResultados .filtro .btnAplicar:hover {
+    background-color: #148dff;
+    cursor: pointer;
+}
 .produtosResultados .produtosList {
     display: flex;
     flex-wrap: wrap;
+    min-width: 1145px;
 }
 body:has(.footerPesquisa) {
     display: flex;
