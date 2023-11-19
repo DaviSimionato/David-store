@@ -621,11 +621,70 @@ body:has(.footerPesquisa) {
     min-height: 100vh;
     flex-direction: column;
 }
-.footerPesquisa {
-    margin: auto 0;
-    margin-bottom: 0;
+/*Login e Cadastro*/
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50vh;
 }
-
+.loginForm h2 {
+    color: #E8772E;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.loginForm h2::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background-color: #148dff;
+    display: block;
+}
+.loginForm label {
+    display: inline-block;
+    background-color: #fff;
+    color: #63686e;
+    position: relative;
+    top: 10px;
+    white-space: nowrap;
+    padding: 0 5px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+.loginForm input {
+    display: block;
+    border: 1px solid #7F858D;
+    outline: 0;
+    min-height: 40px;
+    min-width: 386px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+.loginForm .btnForm {
+    color: #fff;
+    display: flex;
+    font-size: 16;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: #E8772E;
+    min-width: 400px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.loginForm .btnForm:hover {
+    cursor: pointer;
+    background-color: #ee975d;
+}
+.loginForm .btnForm span {
+    color: #fff;
+    margin-right: 5px;
+}
 /*Footer*/
 footer {
     width: 100%;
@@ -640,6 +699,10 @@ footer {
     font-size: 14px;
     text-align: center;
     margin: 10px;
+}
+.footerPesquisa {
+    margin: auto 0;
+    margin-bottom: 0;
 }
 /*Animações*/
 .fadeIn {

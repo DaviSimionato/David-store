@@ -15,13 +15,34 @@
     <link rel="stylesheet" href="style.css">
     <title>Entrar</title>
 </head>
-<body style="background-color: #F2F3F4;">
+<body>
     <?php 
         include_once("includes/header.php");
     ?>
-    <form action="login.php" method="post">
-        
-    </form>
+    <div class="loginForm container1400">
+        <h2>Fazer Login</h2>
+        <form action="includes/login.php" method="post">
+            <label for="loginEmail">Email, CPF ou Nome de usuário</label>
+            <input type="text" name="loginEmail" placeholder="Insira seu e-mail">
+            <label for="loginSenha">Senha</label>
+            <input type="password" name="loginSenha" placeholder="Insira sua senha">
+            <button type="submit" class="btnForm">
+                <span class="material-symbols-outlined">login</span>
+                Entrar
+            </button>
+            <div style="display: flex;justify-content: space-between" class="optsLogin">
+                <div class="irCadastro">
+                    <p style="font-size: 13px;margin-top: 5px;color:#63686e">
+                        Não tem uma conta 
+                        <a href="cadastrar.php" style="color:#E8772E;font-weight:700;text-decoration:underline">cadastre-se</a>
+                    </p>
+                </div>
+                <div class="esqueceuSenha">
+                    <a href="recuperarSenha.php" style="color:#7F858D;font-weight:700;text-decoration:underline;font-size:13px">Esqueci a senha</a>
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="footerPesquisa">
         <?php 
             include_once("includes/footer.php");
