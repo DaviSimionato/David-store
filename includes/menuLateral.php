@@ -6,7 +6,7 @@
         <div class="ola">
             <?php 
                 if(isset($_SESSION["user"])) {
-                    echo "<h2>Olá {$_SESSION["user"]->nome}</h2>";
+                    echo "<h2>Olá {$_SESSION["user"]->nomeUsuario}</h2>";
                 }else {
                     echo "<h2>Olá. Faça seu login</h2>";
                 }
@@ -27,7 +27,7 @@
                         while($cat = $categoriasLateral->fetch_object()) {
                             echo "
                                 <div class='categoriaMenuLateral'>
-                                    <a href='pesquisa.php?categoria={$cat->categoria}'>{$cat->categoria}</a>
+                                    <a href='pesquisa.php?pesquisa={$cat->categoria}'>{$cat->categoria}</a>
                                 </div>";
                         } 
                         echo "</li>";
@@ -45,7 +45,7 @@
             }else {
                 echo "
                 <div class='btnEntrar'>
-                    <a href='entrar.php' style='text-transform: uppercase;'>Sair</a>
+                    <a href='includes/sair.php' style='text-transform: uppercase;'>Sair</a>
                 </div>
                 ";
             }

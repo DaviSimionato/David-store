@@ -1,6 +1,5 @@
 <?php 
     require_once("includes/login.php");
-    require_once("includes/banco.php");
     if(!isset($_SESSION["user"])) {
         header("Location: entrar.php");
     }

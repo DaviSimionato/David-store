@@ -11,7 +11,17 @@
             </div>
             <?php 
                 if(isset($_SESSION["user"])) {
-                    
+                    echo "
+                    <div class='entrarOuCad'>
+                        <span class='material-symbols-outlined'>account_circle</span>
+                        <div class='sessionInfo'>
+                            <p>
+                                Olá, {$_SESSION['user']->nomeUsuario}
+                            </p>
+                            <p><strong><a href='minhaConta.php'>MINHA CONTA</a></strong> | <strong><a href='includes/sair.php'>SAIR</a></strong></p>
+                        </div>
+                    </div>
+                    ";  
                 }else {
                     echo "
                     <div class='entrarOuCad'>

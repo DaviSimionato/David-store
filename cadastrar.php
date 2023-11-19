@@ -1,6 +1,5 @@
 <?php 
     require_once("includes/login.php");
-    require_once("includes/banco.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

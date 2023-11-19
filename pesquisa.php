@@ -1,6 +1,5 @@
 <?php 
     require_once("includes/login.php");
-    require_once("includes/banco.php");
     $pesquisa = $_GET["pesquisa"] ?? "";
     $ord = $_GET["ord"] ?? "codigo";
     if(!empty($pesquisa)) {
