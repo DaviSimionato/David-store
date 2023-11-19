@@ -23,7 +23,7 @@
         <h2>Fazer Login</h2>
         <form action="includes/login.php" method="post">
             <label for="loginEmail">Email, CPF ou Nome de usuário</label>
-            <input type="text" name="loginEmail" placeholder="Insira seu e-mail">
+            <input type="email" name="loginEmail" placeholder="Insira seu e-mail">
             <label for="loginSenha">Senha</label>
             <input type="password" name="loginSenha" placeholder="Insira sua senha">
             <button type="submit" class="btnForm">
