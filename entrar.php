@@ -1,4 +1,5 @@
-<?php 
+<?php
+    require_once("includes/banco.php"); 
     require_once("includes/login.php");
     $contaCriada = $_GET['contaCriada'] ?? false;
     $credIncor = $_GET['credIncor'] ?? false;

@@ -1,4 +1,5 @@
-<?php 
+<?php
+    require_once("includes/banco.php");
     require_once("includes/login.php");
     $idProd = $_GET["c"];
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
@@ -8,6 +9,9 @@
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
     if(is_null($produto)) {
         header("Location: index.php");
+    }
+    if(isset($_SESSION["user"])) {
+        $bd->query("call procHistorico({$_SESSION['user']->idUsuario},{$produto->codigo})");
     }
 ?>
 <!DOCTYPE html>

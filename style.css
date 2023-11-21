@@ -177,6 +177,9 @@ html:has(.mLateral.aberto) {
     height: 100%;
     overflow-y: hidden;
 }
+html:has(.mLateral.aberto) label {
+    background-color: transparent;
+}
 .mLateral.aberto .menuLateralOpen {
     position: absolute;
     display: flex;

@@ -1,4 +1,5 @@
-<?php 
+<?php
+    require_once("includes/banco.php"); 
     require_once("includes/login.php");
     $erroVazio = $_GET['erroVazio'] ?? false;
     $erroCpfOuTelefone = $_GET['erroCpfOuTelefone'] ?? false;

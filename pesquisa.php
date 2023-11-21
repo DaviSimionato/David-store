@@ -1,4 +1,5 @@
-<?php 
+<?php
+    require_once("includes/banco.php");
     require_once("includes/login.php");
     $pesquisa = $_GET["pesquisa"] ?? "";
     $ord = $_GET["ord"] ?? "codigo";
