@@ -699,6 +699,24 @@ body:has(.footerPesquisa) {
     color: #fff;
     margin-right: 5px;
 }
+.msgDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    height: 50px;
+    margin-top: 15px;
+}
+.msgDisplay p {
+    font-weight: 700;
+    color: #fff;
+}
+.sucesso {
+    background-color: #148dff;
+}
+.erro {
+    background-color: #f13a3a;
+}
 /*Footer*/
 footer {
     width: 100%;

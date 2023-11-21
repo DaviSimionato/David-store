@@ -13,10 +13,10 @@
                 $_SESSION["user"] = $testeAcesso;
                 header("Location: ../index.php");
             }else {
-                header("Location: ../entrar.php?erro=credIncor");
+                header("Location: ../entrar.php?credIncor=1");
             }
         }else {
-            header("Location: ../entrar.php?erro=credIncor");
+            header("Location: ../entrar.php?credIncor=1");
         }
     }
 ?>

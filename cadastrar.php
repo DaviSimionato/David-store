@@ -1,5 +1,9 @@
 <?php 
     require_once("includes/login.php");
+    $erroVazio = $_GET['erroVazio'] ?? false;
+    $erroCpfOuTelefone = $_GET['erroCpfOuTelefone'] ?? false;
+    $erroSenhasDiferentes = $_GET['erroSenhasDiferentes'] ?? false;
+    $erroCredenciaisRepetidas = $_GET['erroCredenciaisRepetidas'] ?? false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,13 +16,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
-    <title>Entrar</title>
+    <title>Cadastre-se</title>
 </head>
 <body>
     <?php 
         include_once("includes/header.php");
     ?>
     <div style="display: block; height:auto" class="loginForm container1400">
+        <?php 
+            if($erroVazio) {
+                echo "
+                    <div class='msgDisplay erro'>
+                        <p>Campos do cadastro estão vazios!</p>
+                    </div>
+                ";
+            }
+            if($erroCpfOuTelefone) {
+                echo "
+                    <div class='msgDisplay erro'>
+                        <p>Campos de CPF ou telefone estão incorretos!</p>
+                    </div>
+                ";
+            }
+            if($erroSenhasDiferentes) {
+                echo "
+                    <div class='msgDisplay erro'>
+                        <p>As senhas inseridas não conferem!</p>
+                    </div>
+                ";
+            }
+            if($erroCredenciaisRepetidas) {
+                echo "
+                    <div class='msgDisplay erro'>
+                        <p>Credenciais já cadastradas anteriormente!</p>
+                    </div>
+                ";
+            }
+        ?>
         <h2>Criar Conta</h2>
         <form action="includes/cadastro.php" method="post">
             <label for="cadastroNome">Nome</label>
@@ -28,15 +62,15 @@
             <label for="cadastroNome">Nome de usuário</label>
             <input type="text" name="cadastroNomeUsuario" placeholder="Insira seu nome de usuário">
             <label for="cadastroEmail">Email</label>
-            <input type="email" name="loginEmail" placeholder="Insira seu e-mail">
+            <input type="email" name="cadastroEmail" placeholder="Insira seu e-mail">
             <label for="cadastroTelefone">Telefone</label>
             <input type="text" name="cadastroTelefone" placeholder="Insira seu telefone (somente numeros)" class="cadTel">
             <label for="cadastroCPF">CPF</label>
             <input type="text" name="cadastroCPF" placeholder="Insira seu CPF (somente numeros)" class="cadCPF">
-            <label for="loginSenha">Senha</label>
-            <input type="password" name="loginSenha" placeholder="Insira sua senha">
-            <label for="loginSenhaRep">Repita a senha</label>
-            <input type="password" name="loginSenhaRep" placeholder="Insira sua senha novamente">
+            <label for="cadastroSenha">Senha</label>
+            <input type="password" name="cadastroSenha" placeholder="Insira sua senha">
+            <label for="cadastroSenhaRep">Repita a senha</label>
+            <input type="password" name="cadastroSenhaRep" placeholder="Insira sua senha novamente">
             <label for="perguntaSecreta">Crie uma pergunta secreta</label>
             <input type="text" name="perguntaSecreta" placeholder="Será utilizada para recuperar a senha">
             <label for="perguntaSecretaResposta">Resposta da pergunta secreta</label>

@@ -1,5 +1,7 @@
 <?php 
     require_once("includes/login.php");
+    $contaCriada = $_GET['contaCriada'] ?? false;
+    $credIncor = $_GET['credIncor'] ?? false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +21,22 @@
         include_once("includes/header.php");
     ?>
     <div class="loginForm container1400">
+        <?php 
+            if($contaCriada) {
+                echo "
+                    <div class='msgDisplay sucesso'>
+                        <p>Conta criada com sucesso!</p>
+                    </div>
+                ";
+            }
+            if($credIncor) {
+                echo "
+                    <div class='msgDisplay erro'>
+                        <p>Credenciais incorretas!</p>
+                    </div>
+                ";
+            }
+        ?>
         <h2>Fazer Login</h2>
         <form action="includes/login.php" method="post">
             <label for="loginEmail">Email, CPF ou Nome de usuário</label>
