@@ -5,6 +5,11 @@
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
     $buscaDepartamentos = $bd->query("select * from departamentos");
     $buscaMarcas = $bd->query("select * from vwmarcasRecomendadas limit 6");
+    if(isset($_SESSION['user'])) {
+        $userId = $_SESSION['user']->idUsuario;
+        $buscaHistorico = $bd->query("select * from vwProdutosHistorico
+        where idUsuario = $userId limit 15");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -126,8 +131,42 @@
                 <span class="material-symbols-outlined">navigate_next</span>
             </div>
         </div>
+        <?php 
+            if(isset($_SESSION['user'])) {
+                echo "
+                <div class='sectionTopic'>
+                    <h2 style='text-transform: uppercase; margin-bottom: 0' class='tituloSection'>Produtos vistos recentemente</h2>
+                    <span style='margin-top: 15px;' class='material-symbols-outlined'>ads_click</span>
+                </div>
+                <div class='produtosHistorico'>
+                    <div class='ant'>
+                        <span class='material-symbols-outlined'>navigate_before</span>
+                    </div>
+                ";
+                while($prodHist = $buscaHistorico->fetch_object()) {
+                    echo "
+                        <div class='produtos prodHist' title='{$prodHist->nome}'>
+                            <a href='produto.php?n={$prodHist->nome}&c={$prodHist->codigo}'>
+                            <img src='{$prodHist->imagemProduto}' alt=' width='268' height='162'>
+                            <p class='nome'>{$prodHist->nome}</p>
+                            <div class='infoPreco'>
+                                <p class='preco'>{$prodHist->precoAvista}</p>
+                                <p class='avisoPix'>À vista no PIX</p>
+                            </div>
+                            </a>
+                            <a href='#' class='comprar'>COMPRAR</a>
+                        </div>
+                        ";
+                }
+                echo "
+                    <div class='prox'>
+                        <span class='material-symbols-outlined'>navigate_next</span>
+                    </div>
+                </div>
+                ";
+            }
+        ?>
         <br>
-        <!-- Quando tiver feito session criar uma parte de historico -->
     </section>
     <?php 
         include_once("includes/footer.php");

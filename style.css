@@ -421,6 +421,11 @@ h2.tituloSection {
     flex-wrap: wrap;
     justify-content: center;
 }
+.produtosHistorico {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 /*Produto*/
 .sectionProds {
     background-color: #fff;
