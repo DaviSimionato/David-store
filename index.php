@@ -8,7 +8,7 @@
     if(isset($_SESSION['user'])) {
         $userId = $_SESSION['user']->idUsuario;
         $buscaHistorico = $bd->query("select * from vwProdutosHistorico
-        where idUsuario = $userId limit 15");
+        where idUsuario = $userId limit 25");
     }
 ?>
 <!DOCTYPE html>
@@ -136,7 +136,7 @@
                 echo "
                 <div class='sectionTopic'>
                     <h2 style='text-transform: uppercase; margin-bottom: 0' class='tituloSection'>Produtos vistos recentemente</h2>
-                    <span style='margin-top: 15px;' class='material-symbols-outlined'>ads_click</span>
+                    <span style='margin-top: 15px;' class='material-symbols-outlined'>history</span>
                 </div>
                 <div class='produtosHistorico'>
                     <div class='ant'>
@@ -173,5 +173,6 @@
     ?>
     <script src="js/sliderRec.js"></script>
     <script src="js/sliderMA.js"></script>
+    <script src="js/sliderHist.js"></script>
 </body>
 </html>

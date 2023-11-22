@@ -424,7 +424,7 @@ h2.tituloSection {
 .produtosHistorico {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 /*Produto*/
 .sectionProds {
