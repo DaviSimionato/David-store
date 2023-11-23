@@ -579,6 +579,16 @@ a.categ:hover {
 .infoTecnica h2,h3,strong {
     font-size: 16px;
 }
+.reviews .nota {
+    display: flex;
+    align-items: center;
+}
+.reviews .nota span {
+    margin-bottom: 3px;
+}
+.reviews .review {
+    margin-bottom: 30px;
+}
 /*Pagina de pesquisa*/
 .produtosResultados {
     display: flex;

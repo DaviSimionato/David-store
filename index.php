@@ -173,6 +173,10 @@
     ?>
     <script src="js/sliderRec.js"></script>
     <script src="js/sliderMA.js"></script>
-    <script src="js/sliderHist.js"></script>
+    <?php 
+        if(isset($_SESSION["user"])) {
+            echo "<script src='js/sliderHist.js'></script>";
+        }
+    ?>
 </body>
 </html>

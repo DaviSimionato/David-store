@@ -7,7 +7,12 @@
     $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}
     and codigo != {$produto->codigo} limit 9");
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
-    $buscaReviews = $bd->query("select * from vwReviews where idProduto = $idProd");
+    $buscaReviews = $bd->query("select * from vwReviews where idProduto = $idProd limit 5");
+    if($produto->qtdReviews > 5) {
+        $btnVerMaisReviews = true;
+    }else {
+        $btnVerMaisReviews = false;
+    }
     if(is_null($produto)) {
         header("Location: index.php");
     }
@@ -164,14 +169,40 @@
         </div>
     </section>
     <section class="sectionProds container1400">
+        <div class="sectionTopic">
+            <h2 style="text-transform: uppercase; margin: 20px 0; padding:0; font-size:20px" class="tituloSection">Avaliações</h2>
+            <span style="margin-left:10px" class="material-symbols-outlined">reviews</span>
+        </div>
         <div class="reviews">
             <?php 
                 while($rev = $buscaReviews->fetch_object()) {
-                    $nota = getEstrelas($rev->nota);
+                    $notaTitulo = "";
+                    switch($rev->nota) {
+                        case 0: $nota = "Péssimo";
+                            break;
+                        case 1: $nota = "Ruim";
+                            break;
+                        case 2: $nota = "Abaixo da espectativa";
+                            break;
+                        case 3: $nota = "Regular";
+                            break;
+                        case 4: $nota = "Bom";
+                            break;
+                        case 5: $nota = "Ótimo";
+                    }
+                    $notaEstrelas = getEstrelas($rev->nota);
                     echo "
                         <div class='review'>
-                            <p style='font-weight:bold'>{$rev->usuario}</p>
-                            <div class='nota'>$nota</div>
+                            <div class='nota'>
+                                <span style='margin-right:2px' class='material-symbols-outlined'>person</span>
+                                <p style='margin:0;font-weight:600;margin-right:5px;color:#444d59'>{$rev->nomeUsuario}</p>
+                                - 
+                                $notaEstrelas
+                            </div>
+                            <p style='margin:0;font-size:16px;font-weight:bold;margin-left:5px;margin-top:4px'>
+                            $nota
+                            </p>
+                            <p style='margin-top: 5px;margin-left:5px'>{$rev->comentario}</p>
                         </div>
                     ";
                 }
@@ -252,7 +283,11 @@
         include_once("includes/footer.php");
     ?>
     <script src="js/sliderMA.js"></script>
-    <script src="js/sliderHist.js"></script>
     <script src="js/completarSimilar.js"></script>
+    <?php 
+        if(isset($_SESSION["user"])) {
+            echo "<script src='js/sliderHist.js'></script>";
+        }
+    ?>
 </body>
 </html>
