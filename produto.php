@@ -14,7 +14,7 @@
         $bd->query("call procHistorico({$_SESSION['user']->idUsuario},{$produto->codigo})");
         $userId = $_SESSION['user']->idUsuario;
         $buscaHistorico = $bd->query("select * from vwProdutosHistorico
-        where idUsuario = $userId limit 25");
+        where idUsuario = $userId order by codHist desc limit 25");
     }
 ?>
 <!DOCTYPE html>
