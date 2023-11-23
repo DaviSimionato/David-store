@@ -7,6 +7,7 @@
     $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}
     and codigo != {$produto->codigo} limit 9");
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
+    $buscaReviews = $bd->query("select * from vwReviews where idProduto = $idProd");
     if(is_null($produto)) {
         header("Location: index.php");
     }
@@ -15,6 +16,22 @@
         $userId = $_SESSION['user']->idUsuario;
         $buscaHistorico = $bd->query("select * from vwProdutosHistorico
         where idUsuario = $userId order by codHist desc limit 25");
+    }
+    function getEstrelas($nota) {
+        $estrelasNota = '';
+        for($i = 0;$i<floor($nota);$i++) {
+            $estrelasNota .= '<span class="material-symbols-outlined estrelaCheia">star</span>';
+        }
+        if($nota > floor($nota) + 0.49 && $nota < floor($nota) + 1) {
+            $estrelasNota .= '<span class="material-symbols-outlined estrelaCheia">star_half</span>';
+            $notaLength = 4;
+        }else {
+            $notaLength = 5;
+        }
+        for($i = 0;$i<($notaLength - floor($nota));$i++) {
+            $estrelasNota .= '<span class="material-symbols-outlined estrelaVazia">star</span>';
+        }        
+        return $estrelasNota;
     }
 ?>
 <!DOCTYPE html>
@@ -51,24 +68,12 @@
                 }else {
                     $review = "Reviews";
                 }
-                $estrelasNota = '';
-                for($i = 0;$i<floor($produto->nota);$i++) {
-                    $estrelasNota .= '<span class="material-symbols-outlined estrelaCheia">star</span>';
-                }
-                if($produto->nota > floor($produto->nota) + 0.49 && $produto->nota < floor($produto->nota) + 1) {
-                    $estrelasNota .= '<span class="material-symbols-outlined estrelaCheia">star_half</span>';
-                    $notaLength = 4;
-                }else {
-                    $notaLength = 5;
-                }
-                for($i = 0;$i<($notaLength - floor($produto->nota));$i++) {
-                    $estrelasNota .= '<span class="material-symbols-outlined estrelaVazia">star</span>';
-                }
+                $estrelasNotaProduto = getEstrelas($produto->nota);
                 echo "
                     <div class='infoGeral'>
                         <img src='{$produto->imagemMarca}' alt='{$produto->marca}' width='70' height='28'>
                         <div class='space'></div>
-                        <div class='nota'>$estrelasNota <p> - {$produto->nota} ({$produto->qtdReviews} $review)</p></div>
+                        <div class='nota'>$estrelasNotaProduto <p> - {$produto->nota} ({$produto->qtdReviews} $review)</p></div>
                         <div class='space'></div>
                         <a href='#'><span class='material-symbols-outlined fav' title='Adicionar aos favoritos' 
                         style='color:#7F858D;font-size:30px'>favorite</span></a>
@@ -160,6 +165,17 @@
     </section>
     <section class="sectionProds container1400">
         <div class="reviews">
+            <?php 
+                while($rev = $buscaReviews->fetch_object()) {
+                    $nota = getEstrelas($rev->nota);
+                    echo "
+                        <div class='review'>
+                            <p style='font-weight:bold'>{$rev->usuario}</p>
+                            <div class='nota'>$nota</div>
+                        </div>
+                    ";
+                }
+            ?>
             
         </div>
     </section>
