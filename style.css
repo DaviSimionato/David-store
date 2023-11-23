@@ -426,6 +426,9 @@ h2.tituloSection {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+.produtosHistorico .ant {
+    margin-left: 3px;
+}
 /*Produto*/
 .sectionProds {
     background-color: #fff;

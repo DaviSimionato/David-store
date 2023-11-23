@@ -159,6 +159,11 @@
         </div>
     </section>
     <section class="sectionProds container1400">
+        <div class="reviews">
+            
+        </div>
+    </section>
+    <section class="sectionProds container1400">
         <div class="sectionTopic">
             <h2 style="text-transform: uppercase; margin-bottom: 0" class="tituloSection">Produtos mais acessados</h2>
             <span style="margin-top: 15px;" class="material-symbols-outlined">ads_click</span>
