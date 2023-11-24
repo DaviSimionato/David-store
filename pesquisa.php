@@ -69,7 +69,7 @@
                         while($prod = $buscaPesquisa->fetch_object()) {
                             echo "
                             <div class='produtos prodPesq' title='{$prod->nome}'>
-                                <a href='produto.php?n={$prod->nome}&c={$prod->codigo}'>
+                                <a href='produto.php?{$prod->nome}&c={$prod->codigo}'>
                                 <img src='{$prod->imagemProduto}' alt=' width='268' height='162'>
                                 <p class='nome'>{$prod->nome}</p>
                                 <div class='infoPreco'>

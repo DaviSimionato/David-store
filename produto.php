@@ -8,8 +8,8 @@
     and codigo != {$produto->codigo} limit 9");
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
     $buscaReviews = $bd->query("select * from vwReviews where idProduto = $idProd limit 5");
-    $testeReviews = $bd->query("select * from vwReviews where idProduto = $idProd limit 5");
-    if(is_null($testeReviews->fetch_object())) {
+    $testeReviews = $bd->query("select ifnull(count(idReview),0) as 'qtd' from vwReviews where idProduto = $idProd")->fetch_object();
+    if($testeReviews->qtd == 0) {
         $reviewsVazias = true;
     }else {
         $reviewsVazias = false;
@@ -142,7 +142,7 @@
                     while($prodSimilar = $buscaProdutosSimilares->fetch_object()) {
                         echo "
                         <div class='produtoSimilar' title='{$prodSimilar->nome}'>
-                            <a href='produto.php?n={$prodSimilar->nome}&c={$prodSimilar->codigo}'>
+                            <a href='produto.php?{$prodSimilar->nome}&c={$prodSimilar->codigo}'>
                                 <img src='{$prodSimilar->imagemProduto}' width='100'>
                                 <p>{$prodSimilar->precoAvista}</p>
                             </a>
@@ -229,7 +229,20 @@
                     }
                 }
             ?>
-            
+            <div class="btnsReview">
+                <div>
+                    <?php 
+                        if($testeReviews->qtd > 5) {
+                            echo "
+                                <a href='reviews.php?{$produto->nome}&c=$idProd'>Ver mais avaliações</a>
+                            ";
+                        }
+                        echo "
+                            <a href='escreverReview.php?{$produto->nome}&c=$idProd'>Escrever review</a>
+                        ";
+                    ?>
+                </div>
+            </div>
         </div>
     </section>
     <section class="sectionProds container1400">
@@ -245,7 +258,7 @@
                     while($prodMaisAces = $buscaProdutosMaisAces->fetch_object()) {
                         echo "
                             <div class='produtos prodMA' title='{$prodMaisAces->nome}'>
-                                <a href='produto.php?n={$prodMaisAces->nome}&c={$prodMaisAces->codigo}'>
+                                <a href='produto.php?{$prodMaisAces->nome}&c={$prodMaisAces->codigo}'>
                                 <img src='{$prodMaisAces->imagemProduto}' alt=' width='268' height='162'>
                                 <p class='nome'>{$prodMaisAces->nome}</p>
                                 <div class='infoPreco'>
@@ -279,7 +292,7 @@
                     while($prodHist = $buscaHistorico->fetch_object()) {
                         echo "
                             <div class='produtos prodHist' title='{$prodHist->nome}'>
-                                <a href='produto.php?n={$prodHist->nome}&c={$prodHist->codigo}'>
+                                <a href='produto.php?{$prodHist->nome}&c={$prodHist->codigo}'>
                                 <img src='{$prodHist->imagemProduto}' alt=' width='268' height='162'>
                                 <p class='nome'>{$prodHist->nome}</p>
                                 <div class='infoPreco'>
