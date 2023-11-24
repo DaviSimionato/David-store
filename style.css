@@ -40,7 +40,7 @@ span.material-symbols-outlined {
     user-select: none;
 }
 .container1400 {
-    max-width: 1400px;
+    width: 1400px;
     margin: 0 auto;
 }
 .container1330 {
@@ -777,6 +777,19 @@ body:has(.footerPesquisa) {
 }
 .erro {
     background-color: #f13a3a;
+}
+/*Review*/
+.reviewContainer .estrelasReview {
+    display: flex;
+    align-items: center;
+}
+.estrelasReview select {
+    margin-right: 5px;
+}
+span.estrelaRev {
+    color: #E8772E;
+    margin-bottom: 7px;
+    font-size: 25px;
 }
 /*Footer*/
 footer {

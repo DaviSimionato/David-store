@@ -203,7 +203,7 @@
                                 break;
                             case 1: $nota = "Ruim";
                                 break;
-                            case 2: $nota = "Abaixo da espectativa";
+                            case 2: $nota = "Insatisfatório";
                                 break;
                             case 3: $nota = "Regular";
                                 break;
