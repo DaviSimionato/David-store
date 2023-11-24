@@ -582,6 +582,13 @@ a.categ:hover {
 .infotecProd .sectionTopic:hover {
     cursor: pointer;
     user-select: none;
+
+
+
+
+
+
+    align-items: center;
 }
 .infoTecnica * {
     font-size: 14px;
