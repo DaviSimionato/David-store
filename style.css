@@ -571,10 +571,22 @@ a.categ:hover {
 .descritivo h2,h3,strong {
     font-size: 16px;
 }
+.descritivo.fechado {
+    display: none;
+}
+.descritivoProd .sectionTopic:hover {
+    cursor: pointer;
+}
 /*Info tecnica*/
+.infotecProd .sectionTopic:hover {
+    cursor: pointer;
+}
 .infoTecnica * {
     font-size: 14px;
     margin: 5px 0;
+}
+.infoTecnica.fechado {
+    display: none;
 }
 .infoTecnica h2,h3,strong {
     font-size: 16px;

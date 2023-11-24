@@ -8,6 +8,12 @@
     and codigo != {$produto->codigo} limit 9");
     $buscaProdutosMaisAces = $bd->query("select * from vwProdutos order by acessos desc limit 30");
     $buscaReviews = $bd->query("select * from vwReviews where idProduto = $idProd limit 5");
+    $testeReviews = $bd->query("select * from vwReviews where idProduto = $idProd limit 5");
+    if(is_null($testeReviews->fetch_object())) {
+        $reviewsVazias = true;
+    }else {
+        $reviewsVazias = false;
+    }
     if($produto->qtdReviews > 5) {
         $btnVerMaisReviews = true;
     }else {
@@ -146,22 +152,28 @@
             </div>
         </div>
     </section>
-    <section class="sectionProds container1400">
-        <div class="descritivo">
-            <div class="sectionTopic">
-                    <h2 style="text-transform: uppercase; margin: 20px 0; padding:0; font-size:20px" class="tituloSection">Descrição do produto</h2>
-                    <span style="margin-left:10px" class="material-symbols-outlined">description</span>
+    <section class="sectionProds container1400 descritivoProd">
+        <div style="justify-content: space-between;" class="sectionTopic">
+            <div style="display: flex;align-items:center">
+                <h2 style="text-transform: uppercase; margin: 20px 0; padding:0; font-size:20px" class="tituloSection">Descrição do produto</h2>
+                <span style="margin-left:10px" class="material-symbols-outlined">description</span>
             </div>
+            <span style="font-size: 35px;margin-right: 45px" class="material-symbols-outlined mostrar">expand_less</span>
+        </div>
+        <div class="descritivo">
             <?php 
                 echo "{$produto->descritivo}";
             ?>
         </div>
     </section>
-    <section class="sectionProds container1400">
-            <div class="sectionTopic">
-                <h2 style="text-transform: uppercase; margin: 20px 0; padding:0; font-size:20px" class="tituloSection">INFORMAÇÕES TÉCNICAS</h2>
+    <section class="sectionProds container1400 infotecProd">
+        <div style="justify-content: space-between;" class="sectionTopic">
+            <div style="display: flex;align-items:center">
+                <h2 style="text-transform: uppercase; margin: 20px 0; padding:0; font-size:20px" class="tituloSection">Informações técnicas</h2>
                 <span style="margin-left:10px" class="material-symbols-outlined">info</span>
             </div>
+            <span style="font-size: 35px;margin-right: 45px" class="material-symbols-outlined mostrar">expand_less</span>
+        </div>
         <div class="infoTecnica">
             <?php 
                 echo "{$produto->infoTecnica}";
@@ -175,36 +187,46 @@
         </div>
         <div class="reviews">
             <?php 
-                while($rev = $buscaReviews->fetch_object()) {
-                    $notaTitulo = "";
-                    switch($rev->nota) {
-                        case 0: $nota = "Péssimo";
-                            break;
-                        case 1: $nota = "Ruim";
-                            break;
-                        case 2: $nota = "Abaixo da espectativa";
-                            break;
-                        case 3: $nota = "Regular";
-                            break;
-                        case 4: $nota = "Bom";
-                            break;
-                        case 5: $nota = "Ótimo";
-                    }
-                    $notaEstrelas = getEstrelas($rev->nota);
+                if($reviewsVazias) {
                     echo "
-                        <div class='review'>
-                            <div class='nota'>
-                                <span style='margin-right:2px' class='material-symbols-outlined'>person</span>
-                                <p style='margin:0;font-weight:600;margin-right:5px;color:#444d59'>{$rev->nomeUsuario}</p>
-                                - 
-                                $notaEstrelas
+                            <div class='review'>
+                                <p style='opacity:0.5;font-size:18px;font-weight:bold;margin:0; text-align:center'>
+                                Nenhuma avaliação até agora!
+                                </p>
                             </div>
-                            <p style='margin:0;font-size:16px;font-weight:bold;margin-left:5px;margin-top:4px'>
-                            $nota
-                            </p>
-                            <p style='margin-top: 5px;margin-left:5px'>{$rev->comentario}</p>
-                        </div>
-                    ";
+                        ";
+                }else {
+                    while($rev = $buscaReviews->fetch_object()) {
+                        $notaTitulo = "";
+                        switch($rev->nota) {
+                            case 0: $nota = "Péssimo";
+                                break;
+                            case 1: $nota = "Ruim";
+                                break;
+                            case 2: $nota = "Abaixo da espectativa";
+                                break;
+                            case 3: $nota = "Regular";
+                                break;
+                            case 4: $nota = "Bom";
+                                break;
+                            case 5: $nota = "Ótimo";
+                        }
+                        $notaEstrelas = getEstrelas($rev->nota);
+                        echo "
+                            <div class='review'>
+                                <div class='nota'>
+                                    <span style='margin-right:2px' class='material-symbols-outlined'>person</span>
+                                    <p style='margin:0;font-weight:600;margin-right:5px;color:#444d59'>{$rev->nomeUsuario}</p>
+                                    - 
+                                    $notaEstrelas
+                                </div>
+                                <p style='margin:0;font-size:16px;font-weight:bold;margin-left:5px;margin-top:4px'>
+                                $nota
+                                </p>
+                                <p style='font-size:14px;margin-top: 5px;margin-left:5px'>{$rev->comentario}</p>
+                            </div>
+                        ";
+                    }
                 }
             ?>
             
@@ -284,6 +306,7 @@
     ?>
     <script src="js/sliderMA.js"></script>
     <script src="js/completarSimilar.js"></script>
+    <script src="js/mostrarInfoProd.js"></script>
     <?php 
         if(isset($_SESSION["user"])) {
             echo "<script src='js/sliderHist.js'></script>";
