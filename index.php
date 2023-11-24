@@ -45,7 +45,7 @@
                     while($prod = $buscaProdutosRecomendados->fetch_object()) {
                         echo "
                         <div class='produtos prodRec' title='{$prod->nome}'>
-                            <a href='produto.php?n={$prod->nome}&c={$prod->codigo}'>
+                            <a href='produto.php?{$prod->nome}&c={$prod->codigo}'>
                             <img src='{$prod->imagemProduto}' alt=' width='268' height='162'>
                             <p class='nome'>{$prod->nome}</p>
                             <div class='infoPreco'>
@@ -114,7 +114,7 @@
                 while($prodMaisAces = $buscaProdutosMaisAces->fetch_object()) {
                     echo "
                         <div class='produtos prodMA' title='{$prodMaisAces->nome}'>
-                            <a href='produto.php?n={$prodMaisAces->nome}&c={$prodMaisAces->codigo}'>
+                            <a href='produto.php?{$prodMaisAces->nome}&c={$prodMaisAces->codigo}'>
                             <img src='{$prodMaisAces->imagemProduto}' alt=' width='268' height='162'>
                             <p class='nome'>{$prodMaisAces->nome}</p>
                             <div class='infoPreco'>
@@ -146,7 +146,7 @@
                 while($prodHist = $buscaHistorico->fetch_object()) {
                     echo "
                         <div class='produtos prodHist' title='{$prodHist->nome}'>
-                            <a href='produto.php?n={$prodHist->nome}&c={$prodHist->codigo}'>
+                            <a href='produto.php?{$prodHist->nome}&c={$prodHist->codigo}'>
                             <img src='{$prodHist->imagemProduto}' alt=' width='268' height='162'>
                             <p class='nome'>{$prodHist->nome}</p>
                             <div class='infoPreco'>

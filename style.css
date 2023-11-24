@@ -576,10 +576,19 @@ a.categ:hover {
 }
 .descritivoProd .sectionTopic:hover {
     cursor: pointer;
+    user-select: none;
 }
 /*Info tecnica*/
 .infotecProd .sectionTopic:hover {
     cursor: pointer;
+    user-select: none;
+
+
+
+
+
+
+    align-items: center;
 }
 .infoTecnica * {
     font-size: 14px;
@@ -600,6 +609,25 @@ a.categ:hover {
 }
 .reviews .review {
     margin-bottom: 30px;
+}
+.btnsReview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btnsReview div {
+    display: flex;
+    justify-content: space-between;
+}
+.btnsReview a {
+    background-color: #E8772E;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0 10px;
 }
 /*Pagina de pesquisa*/
 .produtosResultados {
