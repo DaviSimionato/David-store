@@ -23,7 +23,7 @@
     <?php 
         include_once("includes/header.php");
     ?>
-    <div style="display: block; height:auto" class="loginForm container1400">
+    <div style="height:auto" class="loginForm container1400">
         <?php 
             if($erroVazio) {
                 echo "
@@ -54,7 +54,7 @@
                 ";
             }
         ?>
-        <h2>Criar Conta</h2>
+        <h2 style="width: 400px;">Criar Conta</h2>
         <form action="includes/cadastro.php" method="post">
             <label for="cadastroNome">Nome</label>
             <input type="text" name="cadastroNome" placeholder="Insira seu nome">
