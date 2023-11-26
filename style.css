@@ -1,7 +1,7 @@
 /*Set inicial*/
 * {
     font-family: "Poppins", sans-serif;
-    color: #222;
+    color: #42464D;
     list-style: none;
     scrollbar-width: auto;
     scrollbar-color: #e8772e #ffffff;
@@ -701,6 +701,7 @@ body:has(.footerPesquisa) {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 50vh;
 }
 .loginForm h2 {
@@ -767,6 +768,8 @@ body:has(.footerPesquisa) {
     border-radius: 5px;
     height: 50px;
     margin-top: 15px;
+    width: 400px;
+    margin: 0 auto;
 }
 .msgDisplay p {
     font-weight: 700;
@@ -791,6 +794,40 @@ span.estrelaRev {
     margin-bottom: 7px;
     font-size: 25px;
 }
+/*Pagina do usuario*/
+.userIntro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 700px;
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 25px 0;
+    border-radius: 5px;
+
+
+} 
+.infoUser {
+    display: flex;
+    align-items: center;
+}
+.userIntro span {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    color: #E8772E;
+}
+.bemVindo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.emailUsuario {
+    display: flex;
+    align-items: center;
+}
 /*Footer*/
 footer {
     width: 100%;
@@ -814,7 +851,9 @@ footer {
 .fadeIn {
     animation: fadeIn linear .5s;
 }
-
+.config:hover {
+    animation: configSpin linear infinite 5s;
+}
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -834,5 +873,12 @@ footer {
         left: -300px;
     }to {
         left: 0px;
+    }
+}
+@keyframes configSpin {
+    from {
+        transform: rotate(0deg);
+    }to {
+        transform: rotate(-360deg);
     }
 }

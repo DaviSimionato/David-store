@@ -2,6 +2,7 @@
     require_once("includes/banco.php");
     require_once("includes/login.php");
     $idProd = $_GET["c"];
+    $reviewFeita = $_GET['reviewFeita'] ?? false;
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
     $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}
@@ -60,6 +61,15 @@
 </head>
 <body style="background-color: #f2f2f2;">
     <?php include_once("includes/header.php");?>
+    <?php 
+        if($reviewFeita) {
+            echo "
+            <div style='margin-top:15px;' class='msgDisplay sucesso'>
+                <p>Avaliação cadastrada!</p>
+            </div>
+            ";
+        }
+    ?>
     <section class="sectionProds container1400">
         <?php 
             echo "<p style='font-size: 14px'><strong>Você está em:</strong> 
@@ -219,6 +229,9 @@
                                     <p style='margin:0;font-weight:600;margin-right:5px;color:#444d59'>{$rev->nomeUsuario}</p>
                                     - 
                                     $notaEstrelas
+                                    <p style='margin:0;margin-left:5px;font-size:13px;font-weight:700;opacity:0.7'>
+                                        {$rev->dataReview}
+                                    </p>
                                 </div>
                                 <p style='margin:0;font-size:16px;font-weight:bold;margin-left:5px;margin-top:4px'>
                                 $nota

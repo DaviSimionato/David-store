@@ -38,7 +38,7 @@
                 ";
             }
         ?>
-        <h2>Fazer Login</h2>
+        <h2 style="width: 400px;">Fazer Login</h2>
         <form action="includes/login.php" method="post">
             <label for="loginEmail">Email, CPF ou Nome de usuário</label>
             <input type="text" name="loginEmail" placeholder="Insira seu e-mail">

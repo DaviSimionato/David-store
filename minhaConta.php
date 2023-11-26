@@ -18,9 +18,32 @@
     <link rel="stylesheet" href="style.css">
     <title>Meu perfil</title>
 </head>
-<body>
+<body style="background-color:#F2F3F4;">
     <?php 
         include_once("includes/header.php");
     ?>
+    <div class="container1400">
+        <div class="userIntro">
+            <div class="infoUser">
+                <span style="font-size: 60px;margin: 0 20px" class="material-symbols-outlined">account_circle</span>
+                <?php 
+                    echo "
+                    <div class='bemVindo'>
+                        <h2 style='margin:0'>Bem vindo, {$_SESSION['user']->nomeUsuario}</h2>
+                        <div class='emailUsuario'>
+                            <span style='font-size: 16px;margin-right:5px' class='material-symbols-outlined'>mail</span>
+                            <p style='margin:0'>{$_SESSION['user']->email}</p>
+                        </div>
+                    </div>
+                    ";
+                ?>
+            </div>
+            <div class="configConta">
+                <a href='#'>
+                    <span style='font-size: 50px;margin-right:30px;margin-top:10px' class='material-symbols-outlined config'>settings</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

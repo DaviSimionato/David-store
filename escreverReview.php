@@ -26,7 +26,7 @@
     ?>
     <section class="sectionProds container1400">
         <div style="margin-left: 20px" class="reviewContainer">
-            <h2>Opine sobre o produto</h2>
+            <h2>Avaliações do produto</h2>
             <div style="display: flex;margin-bottom: 25px" class="prodOp">
                 <?php 
                     echo "
@@ -53,6 +53,12 @@
                     <span class="material-symbols-outlined estrelaRev estrelaCheia">star</span>
                     <span class="material-symbols-outlined estrelaRev estrelaCheia">star</span>
                 </div>
+                <label for="comentario" style="display: block;margin:20px 0; margin-bottom:10px"><strong>Dê sua opnião sobre o produto</strong></label>
+                <textarea name="comentario" cols="30" rows="10" placeholder="Escreva o que achou do produto" style="width: 700px;height:150px;resize:none;display:block;margin-bottom:15px"></textarea>
+                <button type="submit">Enviar avaliação</button>
+                <?php 
+                    echo "<input type='hidden' name='idProduto' value='{$produto->codigo}'>";
+                ?>
             </form>
 
         </div>
