@@ -4,6 +4,9 @@
     if(!isset($_SESSION["user"])) {
         header("Location: entrar.php");
     }
+    $idUsuario = $_SESSION['user']->idUsuario;
+    $infoUser = $bd->query("select * from usuarios where idUsuario = '$idUsuario'");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +21,40 @@
     <link rel="stylesheet" href="style.css">
     <title>Carrinho</title>
 </head>
-<body>
-    <?php 
-        include_once("includes/header.php");
-    ?>
+<body style="background-color: #F2F3F4;">
+    <header>
+            <div class="header">
+                <a href="index.php"><img src="imgs/svg/logo-no-background.svg" alt="Logo" height="20"></a>
+                <?php 
+                    if(isset($_SESSION["user"])) {
+                        echo "
+                        <div class='entrarOuCad'>
+                            <span class='material-symbols-outlined'>account_circle</span>
+                            <div class='sessionInfo'>
+                                <p>
+                                    Olá, {$_SESSION['user']->nomeUsuario}
+                                </p>
+                                <p><strong><a href='minhaConta.php'>MINHA CONTA</a></strong>
+                            </div>
+                        </div>
+                        ";  
+                    }
+                ?>
+            </div>
+            <script src="js/menuLateral.js"></script>
+    </header>
+    <section class="container1400 carrinhoCompras">
+        <div class="produtosCarrinho">
+            <p>a</p>
+        </div>
+        <div class="resumoCompra">
+            <p>a</p>
+        </div>
+    </section>
+    <div class="footerPesquisa">
+        <?php 
+            include_once("includes/footer.php");
+        ?>
+    </div>
 </body>
 </html>

@@ -33,7 +33,7 @@
             ?>
             <div class="linksUser">
                 <a href="favoritos.php"><span class="material-symbols-outlined fav" title="Favoritos">favorite</span></a>
-                <a href="carrinho.php"><span class="material-symbols-outlined" title="Carrinho">shopping_cart</span></a>
+                <a href="carrinho.php"><span class="material-symbols-outlined fav" title="Carrinho">shopping_cart</span></a>
             </div>
         </div>
         <script src="js/menuLateral.js"></script>

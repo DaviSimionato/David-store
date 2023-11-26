@@ -40,7 +40,6 @@
                 <div class="ant">
                     <span class="material-symbols-outlined">navigate_before</span>
                 </div>
-                <a href=''></a>
                 <?php 
                     while($prod = $buscaProdutosRecomendados->fetch_object()) {
                         echo "
@@ -53,7 +52,7 @@
                                 <p class='avisoPix'>À vista no PIX</p>
                             </div>
                             </a>
-                            <a href='#' class='comprar'>COMPRAR</a>
+                            <a href='includes/addCarrinho.php?c={$prod->codigo}&preCarrinho=1' class='comprar'>COMPRAR</a>
                         </div>
                         ";
                     }
@@ -122,7 +121,7 @@
                                 <p class='avisoPix'>À vista no PIX</p>
                             </div>
                             </a>
-                            <a href='#' class='comprar'>COMPRAR</a>
+                            <a href='includes/addCarrinho.php?c={$prodMaisAces->codigo}&preCarrinho=1' class='comprar'>COMPRAR</a>
                         </div>
                         ";
                     }
@@ -154,7 +153,7 @@
                                 <p class='avisoPix'>À vista no PIX</p>
                             </div>
                             </a>
-                            <a href='#' class='comprar'>COMPRAR</a>
+                            <a href='includes/addCarrinho.php?c={$prodHist->codigo}&preCarrinho=1' class='comprar'>COMPRAR</a>
                         </div>
                         ";
                 }

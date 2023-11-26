@@ -78,7 +78,7 @@
                                     <p style='display:none' class='prcOcult'>{$prod->precoOriginal}</p>
                                 </div>
                                 </a>
-                                <a href='#' class='comprar'>COMPRAR</a>
+                                <a href='includes/addCarrinho.php?c={$prod->codigo}&preCarrinho=1' class='comprar'>COMPRAR</a>
                             </div>
                             ";
                         }

@@ -177,6 +177,9 @@ html:has(.mLateral.aberto) {
     height: 100%;
     overflow-y: hidden;
 }
+html:has(.mLateral.aberto) .ant{
+    display: none;
+}
 html:has(.mLateral.aberto) label {
     background-color: transparent;
 }
@@ -827,6 +830,48 @@ span.estrelaRev {
 .emailUsuario {
     display: flex;
     align-items: center;
+}
+/*pre carrinho*/
+.prodPreCarrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+}
+.infoProdPC {
+    display: flex;
+    align-items: center;
+}
+.prodPreCarrinho .precos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+    text-align: center;
+    margin-right: 25px;
+}
+.prodPreCarrinho .precos span {
+    height: 60px;
+    width: 1px;
+    background-color: #7f858d62;
+}
+/*Carrinho*/
+.carrinhoCompras {
+    display: flex;
+    margin-top: 40px;
+}
+.produtosCarrinho {
+    width: calc(70% - 30px);
+    background-color: #fff;
+    margin-right: 30px;
+    padding: 15px;
+    border-radius: 5px;
+}
+.resumoCompra {
+    width: 30%;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
 }
 /*Footer*/
 footer {
