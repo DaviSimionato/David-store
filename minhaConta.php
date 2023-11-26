@@ -22,7 +22,7 @@
     <?php 
         include_once("includes/header.php");
     ?>
-    <div class="container1400">
+    <section class="container1400">
         <div class="userIntro">
             <div class="infoUser">
                 <span style="font-size: 60px;margin: 0 20px" class="material-symbols-outlined">account_circle</span>
@@ -44,6 +44,9 @@
                 </a>
             </div>
         </div>
-    </div>
+        <div class="ultimoPedido">
+            
+        </div>
+    </section>
 </body>
 </html>

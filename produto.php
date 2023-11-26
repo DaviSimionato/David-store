@@ -3,6 +3,7 @@
     require_once("includes/login.php");
     $idProd = $_GET["c"];
     $reviewFeita = $_GET['reviewFeita'] ?? false;
+    $addCart = $_GET['addCart'] ?? false;
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
     $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}
@@ -69,6 +70,13 @@
             </div>
             ";
         }
+        if($addCart) {
+            echo "
+            <div style='margin-top:15px;' class='msgDisplay sucesso'>
+                <p>Produto adicionado ao carrinho!</p>
+            </div>
+            ";
+        }
     ?>
     <section class="sectionProds container1400">
         <?php 
@@ -121,8 +129,8 @@
                         <p style='margin-bottom:0'><strong>{$produto->precoParcel}</strong></p>
                         <p style='margin: 0'>Em até 12x de <strong>R$$precoParcelReais</strong> sem juros no cartão</p>
                         <div class='btns'>
-                            <a href='#' class='comprar'><span class='material-symbols-outlined'>shopping_cart</span>COMPRAR</a>
-                            <a href='#' class='addCarrinho'><span class='material-symbols-outlined'>add_shopping_cart</span></a>
+                            <a href='includes/addCarrinho.php?c=$idProd&preCarrinho=1' class='comprar'><span class='material-symbols-outlined'>shopping_cart</span>COMPRAR</a>
+                            <a href='includes/addCarrinho.php?c=$idProd' class='addCarrinho'><span class='material-symbols-outlined'>add_shopping_cart</span></a>
                         </div>
                     ";           
                 }else {
@@ -279,7 +287,7 @@
                                     <p class='avisoPix'>À vista no PIX</p>
                                 </div>
                                 </a>
-                                <a href='#' class='comprar'>COMPRAR</a>
+                                <a href='includes/addCarrinho.php?c={$prodMaisAces->codigo}&preCarrinho=1' class='comprar'>COMPRAR</a>
                             </div>
                             ";
                         }
@@ -313,7 +321,7 @@
                                     <p class='avisoPix'>À vista no PIX</p>
                                 </div>
                                 </a>
-                                <a href='#' class='comprar'>COMPRAR</a>
+                                <a href='includes/addCarrinho.php?c={$prodHist->codigo}&preCarrinho=1' class='comprar'>COMPRAR</a>
                             </div>
                             ";
                     }
