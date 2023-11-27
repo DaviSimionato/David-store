@@ -861,7 +861,7 @@ span.estrelaRev {
     margin-top: 40px;
 }
 .produtosCarrinho {
-    width: calc(70% - 30px);
+    width: calc(75% - 30px);
     background-color: #fff;
     margin-right: 30px;
     padding: 15px;
@@ -891,10 +891,18 @@ span.estrelaRev {
     font-weight: 400;
 }
 .resumoCompra {
-    width: 30%;
+    width: 25%;
     padding: 15px;
     border-radius: 5px;
     background-color: #fff;
+}
+.infoprecos {
+    padding: 10px;
+    padding-top: 0px;
+}
+.infoprecos p {
+    color: #7f858d;
+    font-weight: 400;
 }
 /*Footer*/
 footer {

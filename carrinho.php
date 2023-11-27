@@ -7,7 +7,12 @@
     $idUsuario = $_SESSION['user']->idUsuario;
     $infoUser = $bd->query("select * from usuarios where idUsuario = '$idUsuario'");
     $itensCarrinho = $bd->query("select * from vwCarrinho where idUsuario = '$idUsuario'");
-    $totalCompra = $bd->query("select sum()");
+    $totalCompra = $bd->query("
+    select concat('R$',format(sum(precoOriginal),2,'de_DE')) 'precoParcel', 
+    concat('R$',format(sum(precoAvistaVlr),2,'de_DE')) 'precoAvista',
+    concat('R$',format(sum(precoOriginal) / 12,2,'de_DE')) 'parcelasTotais',
+    sum(precoOriginal) 'precoOriginal'
+    from vwCarrinho where idUsuario = '$idUsuario'")->fetch_object();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +51,12 @@
     </header>
     <section class="container1400 carrinhoCompras">
         <div class="produtosCarrinho">
+        <div class="sectionTopic">
+                <h2 style="text-transform: uppercase;margin:0;font-size:20px" class="tituloSection">
+                    Produtos selecionados
+                </h2>
+                <span class="material-symbols-outlined">shopping_basket</span>
+        </div>
             <?php
                 while($item = $itensCarrinho->fetch_object()) {
                     echo "
@@ -78,7 +89,42 @@
             ?>
         </div>
         <div class="resumoCompra">
-            <p>a</p>
+            <div class="sectionTopic">
+                    <h2 style="text-transform: uppercase;margin:0;font-size:20px" class="tituloSection">
+                        Resumo
+                    </h2>
+                    <span style="font-size: 25px;" class="material-symbols-outlined">local_atm</span>
+            </div>
+            <div class="infoprecos">
+                <?php
+                    $valorFinal = number_format(floatval($totalCompra->precoOriginal) + 25,2,",",".");
+                    echo "
+                    <div style='display:flex;justify-content:space-between;align-items:center'>
+                        <p style='margin:0;font-size:12px'>Valor dos Produtos: </p>
+                        <p style='margin:0;margin-right:10px'><strong>{$totalCompra->precoParcel}</strong></p>
+                    </div>
+                    <hr>
+                    <div style='display:flex;justify-content:space-between;align-items:center'>
+                        <p style='margin:0;font-size:12px'>Frete: </p>
+                        <p style='margin:0;margin-right:10px'><strong>R$25,00</strong></p>
+                    </div>
+                    <div style='margin-top:30px;display:flex;justify-content:space-between;align-items:center'>
+                        <p style='margin:0;font-size:12px'>Total a prazo: </p>
+                        <p style='margin:0;margin-right:10px'><strong>R$$valorFinal</strong></p>
+                    </div>
+                    <div style='display:flex;justify-content:center;align-items:center'>
+                        <p style='margin:0;margin-top:3px;font-size:12px'>
+                            (Em até <strong style='font-size:12px'>12x de {$totalCompra->parcelasTotais} sem juros</strong>)
+                        </p>
+                    </div>
+                    <div class='precoAvista'>
+                        <p style='margin:0;margin-top:3px;font-size:12px'>
+                            Valor à vista no <b>Pix:</b>
+                        </p>
+                    </div>
+                    ";
+                ?>
+            </div>
         </div>
     </section>
     <div class="footerPesquisa">
