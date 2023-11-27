@@ -6,7 +6,8 @@
     }
     $idUsuario = $_SESSION['user']->idUsuario;
     $infoUser = $bd->query("select * from usuarios where idUsuario = '$idUsuario'");
-
+    $itensCarrinho = $bd->query("select * from vwCarrinho where idUsuario = '$idUsuario'");
+    $totalCompra = $bd->query("select sum()");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +46,36 @@
     </header>
     <section class="container1400 carrinhoCompras">
         <div class="produtosCarrinho">
-            <p>a</p>
+            <?php
+                while($item = $itensCarrinho->fetch_object()) {
+                    echo "
+                        <div class='produtoCart'>
+                            <div class='infoProduto'>
+                                <img style='margin-right:25px' src='{$item->imagemProduto}' alt='{$item->nome}' width=120>
+                                <div class='infoNomes'>
+                                    <p style='font-weight:500'>{$item->marca}</p>
+                                    <p style='max-width:600px;margin-bottom:2px;margin-top:2px'>
+                                        <strong>{$item->nome}</strong>
+                                    </p>
+                                    <p class='infoPrecoPequeno'>Com desconto no PIX: 
+                                        <strong style='font-size: 12px;color: #7f858d;'>{$item->precoAvista}</strong>
+                                    </p>
+                                    <p class='infoPrecoPequeno'>
+                                        Parcelado no cartão em até 12x sem juros: 
+                                        <strong style='font-size: 12px;color: #7f858d;'>{$item->precoParcel}</strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class='precoItem'>
+                                <p style='font-weight:400;margin-bottom:5px'>Preço à vista no PIX:</p>
+                                <p style='font-weight:700;font-size:14px;color: #E8772E;text-align:right'>
+                                    {$item->precoAvista}
+                                </p>
+                            </div>
+                        </div>
+                    ";
+                }
+            ?>
         </div>
         <div class="resumoCompra">
             <p>a</p>

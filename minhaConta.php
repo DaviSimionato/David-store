@@ -39,14 +39,16 @@
                 ?>
             </div>
             <div class="configConta">
-                <a href='#'>
+                <a href='configConta.php'>
                     <span style='font-size: 50px;margin-right:30px;margin-top:10px' class='material-symbols-outlined config'>settings</span>
                 </a>
             </div>
         </div>
-        <div class="ultimoPedido">
-            
-        </div>
     </section>
+    <div class="footerPesquisa">
+        <?php 
+            include_once("includes/footer.php");
+        ?>
+    </div>
 </body>
 </html>

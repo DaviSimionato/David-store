@@ -867,6 +867,29 @@ span.estrelaRev {
     padding: 15px;
     border-radius: 5px;
 }
+.produtoCart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.infoProduto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.produtosCarrinho p {
+    margin: 0;
+    font-size: 12px;
+}
+.infoProduto p strong {
+    font-size: 14px;
+}
+.infoPrecoPequeno {
+    color: #7f858d;
+    font-weight: 400;
+}
 .resumoCompra {
     width: 30%;
     padding: 15px;
