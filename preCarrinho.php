@@ -61,6 +61,10 @@
                 ";
             ?>
         </div>
+        <div class="btnsPreCarrinho">
+            <a href='carrinho.php' class='gotoCarrinho'>Ir para o carrinho</a>
+            <a href='index.php' class='gotoCarrinho'>Continuar comprando</a>
+        </div>
     </section>
     <div class="footerPesquisa">
         <?php 

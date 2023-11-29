@@ -855,6 +855,23 @@ span.estrelaRev {
     width: 1px;
     background-color: #7f858d62;
 }
+.btnsPreCarrinho {
+    display: flex;
+    justify-content: center;
+}
+.gotoCarrinho {
+    padding: 10px;
+    background-color: #E8772E;
+    border-radius: 5px;
+    margin-top: 35px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 10px;
+}
 /*Carrinho*/
 .carrinhoCompras {
     display: flex;
@@ -890,11 +907,23 @@ span.estrelaRev {
     color: #7f858d;
     font-weight: 400;
 }
+.excluirItem a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.excluirItem span {
+    color: #D50D0D;
+    font-size: 25px;
+}
 .resumoCompra {
     width: 25%;
     padding: 15px;
     border-radius: 5px;
     background-color: #fff;
+    max-height: 485px;
+    position: sticky;
+    top: 20px;
 }
 .infoprecos {
     padding: 10px;
@@ -903,6 +932,30 @@ span.estrelaRev {
 .infoprecos p {
     color: #7f858d;
     font-weight: 400;
+}
+.precoAvista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #E5FFF1;
+}
+.precoAvista p {
+    color: #1f9050;
+    margin: 0;
+}
+.precoAvista p b {
+    color: #1F936F;
+}
+.btnsCarrinho {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btnsCarrinho .gotoCarrinho {
+    width: 80%;
+    margin-top: 15px;
 }
 /*Footer*/
 footer {

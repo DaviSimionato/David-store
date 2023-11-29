@@ -10,9 +10,14 @@
     $totalCompra = $bd->query("
     select concat('R$',format(sum(precoOriginal),2,'de_DE')) 'precoParcel', 
     concat('R$',format(sum(precoAvistaVlr),2,'de_DE')) 'precoAvista',
+    sum(precoAvistaVlr) 'precoAvistaVlr',
     concat('R$',format(sum(precoOriginal) / 12,2,'de_DE')) 'parcelasTotais',
     sum(precoOriginal) 'precoOriginal'
     from vwCarrinho where idUsuario = '$idUsuario'")->fetch_object();
+    $vlrDiff = floatval($totalCompra->precoOriginal) - floatval($totalCompra->precoAvistaVlr);
+    if($itensCarrinho->num_rows < 1) {
+        header("Location: carrinhoVazio.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +52,6 @@
                     }
                 ?>
             </div>
-            <script src="js/menuLateral.js"></script>
     </header>
     <section class="container1400 carrinhoCompras">
         <div class="produtosCarrinho">
@@ -65,7 +69,7 @@
                                 <img style='margin-right:25px' src='{$item->imagemProduto}' alt='{$item->nome}' width=120>
                                 <div class='infoNomes'>
                                     <p style='font-weight:500'>{$item->marca}</p>
-                                    <p style='max-width:600px;margin-bottom:2px;margin-top:2px'>
+                                    <p style='width:550px;margin-bottom:2px;margin-top:2px'>
                                         <strong>{$item->nome}</strong>
                                     </p>
                                     <p class='infoPrecoPequeno'>Com desconto no PIX: 
@@ -76,6 +80,12 @@
                                         <strong style='font-size: 12px;color: #7f858d;'>{$item->precoParcel}</strong>
                                     </p>
                                 </div>
+                            </div>
+                            <div class='excluirItem'>
+                                <a href='includes/removerItem.php?c={$item->codigo}'>
+                                    <span class='material-symbols-outlined'>delete</span>
+                                    <p style='font-size:10px;font-weight:700;color:#D50D0D'>Remover</p>
+                                </a>
                             </div>
                             <div class='precoItem'>
                                 <p style='font-weight:400;margin-bottom:5px'>Preço à vista no PIX:</p>
@@ -113,14 +123,24 @@
                         <p style='margin:0;margin-right:10px'><strong>R$$valorFinal</strong></p>
                     </div>
                     <div style='display:flex;justify-content:center;align-items:center'>
-                        <p style='margin:0;margin-top:3px;font-size:12px'>
+                        <p style='margin:0;margin-top:5px;font-size:12px'>
                             (Em até <strong style='font-size:12px'>12x de {$totalCompra->parcelasTotais} sem juros</strong>)
                         </p>
                     </div>
                     <div class='precoAvista'>
-                        <p style='margin:0;margin-top:3px;font-size:12px'>
+                        <p style='margin-top:10px;font-size:12px'>
                             Valor à vista no <b>Pix:</b>
                         </p>
+                        <p style='font-size:30px'>
+                            <b>{$totalCompra->precoAvista}</b>
+                        </p>
+                        <p style='font-size:14px;margin-bottom:10px'>
+                            (Economize <b>R$$vlrDiff</b>)
+                        </p>
+                    </div>
+                    <div class='btnsCarrinho'>
+                        <a href='index.php' class='gotoCarrinho'>Ir para o pagamento</a>
+                        <a href='index.php' class='gotoCarrinho'>Continuar comprando</a>
                     </div>
                     ";
                 ?>
