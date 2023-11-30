@@ -11,7 +11,7 @@
     select concat('R$',format(sum(precoOriginal),2,'de_DE')) 'precoParcel', 
     concat('R$',format(sum(precoAvistaVlr),2,'de_DE')) 'precoAvista',
     sum(precoAvistaVlr) 'precoAvistaVlr',
-    concat('R$',format(sum(precoOriginal) / 12,2,'de_DE')) 'parcelasTotais',
+    concat('R$',format((sum(precoOriginal) + 25) / 12,2,'de_DE')) 'parcelasTotais',
     sum(precoOriginal) 'precoOriginal'
     from vwCarrinho where idUsuario = '$idUsuario'")->fetch_object();
     $vlrDiff = floatval($totalCompra->precoOriginal) - floatval($totalCompra->precoAvistaVlr);
@@ -109,7 +109,8 @@
             </div>
             <div class="infoprecos">
                 <?php
-                    $valorFinal = number_format(floatval($totalCompra->precoOriginal) + 25,2,",",".");
+                    $valorFinalParcel = number_format(floatval($totalCompra->precoOriginal) + 25,2,",",".");
+                    $valorFinalAvista = number_format(floatval($totalCompra->precoAvistaVlr) + 25,2,",",".");
                     echo "
                     <div style='display:flex;justify-content:space-between;align-items:center'>
                         <p style='margin:0;font-size:12px'>Valor dos Produtos: </p>
@@ -122,7 +123,7 @@
                     </div>
                     <div style='margin-top:30px;display:flex;justify-content:space-between;align-items:center'>
                         <p style='margin:0;font-size:12px'>Total a prazo: </p>
-                        <p style='margin:0;margin-right:10px'><strong>R$$valorFinal</strong></p>
+                        <p style='margin:0;margin-right:10px'><strong>R$$valorFinalParcel</strong></p>
                     </div>
                     <div style='display:flex;justify-content:center;align-items:center'>
                         <p style='margin:0;margin-top:5px;font-size:12px'>
@@ -134,7 +135,7 @@
                             Valor à vista no <b>Pix:</b>
                         </p>
                         <p style='font-size:30px'>
-                            <b>{$totalCompra->precoAvista}</b>
+                            <b>$valorFinalAvista</b>
                         </p>
                         <p style='font-size:14px;margin-bottom:10px'>
                             (Economize <b>R$$vlrDiff</b>)
