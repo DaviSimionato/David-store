@@ -164,6 +164,21 @@ span.menuLateral:hover {
     'opsz' 24;
     margin-right: 30px;
 }
+.carrinhoIco {
+    margin-left: -10px;
+}
+.carrinhoIco::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #0079E9;
+    position: relative;
+    float: left;
+    left: 35px;
+    bottom: 10px;
+}
 /*Menu lateral*/
 .mLateral {
     display: none;
@@ -808,8 +823,6 @@ span.estrelaRev {
     background-color: #fff;
     padding: 25px 0;
     border-radius: 5px;
-
-
 } 
 .infoUser {
     display: flex;
@@ -884,6 +897,7 @@ span.estrelaRev {
     margin-right: 30px;
     padding: 15px;
     border-radius: 5px;
+    min-height: 430px;
 }
 .produtoCart {
     display: flex;
@@ -961,6 +975,51 @@ span.estrelaRev {
     width: 80%;
     margin-top: 15px;
 }
+/*Forma de pagamento*/
+.formasPagamento {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.formasPagamento a {
+    border: 3px solid #42464D;
+    width: 170px;
+    padding: 20px;
+    margin: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    -webkit-user-drag: none;
+    user-select: none;
+    border-radius: 5px;
+}
+.formasPagamento a.selected {
+    border-color: #E8772E;
+    background-color: #ffede2;
+}
+.cadCartao {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.cadCartao input {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.cartaoHalfSpace {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cartaoHalfSpace input {
+    width: 47%;
+}
+.cadCartao select {
+    padding: 10px;
+}
+/*Confirmar compra*/
+.dadosCliente {
+    margin-left: 10px;
+}
 /*Footer*/
 footer {
     width: 100%;
@@ -1014,16 +1073,4 @@ footer {
     }to {
         transform: rotate(-360deg);
     }
-}
-.carrinhoIco::before {
-    content: "";
-    display: block;
-    width: 10px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #0079E9;
-    position: relative;
-    float: left;
-    left: 35px;
-    bottom: 10px;
 }

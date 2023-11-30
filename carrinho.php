@@ -5,7 +5,6 @@
         header("Location: entrar.php");
     }
     $idUsuario = $_SESSION['user']->idUsuario;
-    $infoUser = $bd->query("select * from usuarios where idUsuario = '$idUsuario'");
     $itensCarrinho = $bd->query("select * from vwCarrinho where idUsuario = '$idUsuario'");
     $totalCompra = $bd->query("
     select concat('R$',format(sum(precoOriginal),2,'de_DE')) 'precoParcel', 
@@ -142,7 +141,7 @@
                         </p>
                     </div>
                     <div class='btnsCarrinho'>
-                        <a href='index.php' class='gotoCarrinho'>Ir para o pagamento</a>
+                        <a href='pagamento.php' class='gotoCarrinho'>Ir para o pagamento</a>
                         <a href='index.php' class='gotoCarrinho'>Continuar comprando</a>
                     </div>
                     ";
