@@ -1,4 +1,15 @@
-<?php include_once("menuLateral.php");?>
+<?php 
+    require_once("banco.php");
+    require_once("login.php");
+    include_once("menuLateral.php");
+    $carrinhoAlert = "";
+    if(isset($_SESSION['user'])) {
+        $carrinhoAlertTest = $bd->query("select idUsuario from carrinho where idUsuario = {$_SESSION['user']->idUsuario}");
+        if($carrinhoAlertTest->num_rows != 0) {
+            $carrinhoAlert = "carrinhoIco";
+        }
+    }
+?>
 <header>
         <div class="header">
             <span class="material-symbols-outlined menuLateral">menu</span>
@@ -30,11 +41,13 @@
                     </div>
                     ";
                 }
-            ?>
-            <div class="linksUser">
-                <a href="favoritos.php"><span class="material-symbols-outlined fav" title="Favoritos">favorite</span></a>
-                <a href="carrinho.php"><span class="material-symbols-outlined fav" title="Carrinho">shopping_cart</span></a>
+            echo "
+            <div class='linksUser'>
+                <a href='favoritos.php'><span class='material-symbols-outlined fav' title='Favoritos'>favorite</span></a>
+                <a href='carrinho.php'><span class='material-symbols-outlined fav $carrinhoAlert' title='Carrinho'>shopping_cart</span></a>
             </div>
+            ";
+            ?>
         </div>
         <script src="js/menuLateral.js"></script>
 </header>

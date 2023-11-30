@@ -150,6 +150,7 @@ span.menuLateral:hover {
 }
 .linksUser a {
     height: 25px;
+    max-width: 55px;
 }
 .linksUser span {
     color: #fff;
@@ -900,6 +901,9 @@ span.estrelaRev {
     margin: 0;
     font-size: 12px;
 }
+.nomeProd:hover {
+    text-decoration: underline;
+}
 .infoProduto p strong {
     font-size: 14px;
 }
@@ -1010,4 +1014,16 @@ footer {
     }to {
         transform: rotate(-360deg);
     }
+}
+.carrinhoIco::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #0079E9;
+    position: relative;
+    float: left;
+    left: 35px;
+    bottom: 10px;
 }

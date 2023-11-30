@@ -69,9 +69,11 @@
                                 <img style='margin-right:25px' src='{$item->imagemProduto}' alt='{$item->nome}' width=120>
                                 <div class='infoNomes'>
                                     <p style='font-weight:500'>{$item->marca}</p>
-                                    <p style='width:550px;margin-bottom:2px;margin-top:2px'>
-                                        <strong>{$item->nome}</strong>
-                                    </p>
+                                    <a class='nomeProd' href='produto.php?{$item->nome}&c={$item->codigo}'>
+                                        <p style='width:550px;margin-bottom:2px;margin-top:2px'>
+                                            <strong>{$item->nome}</strong>
+                                        </p>
+                                    </a>
                                     <p class='infoPrecoPequeno'>Com desconto no PIX: 
                                         <strong style='font-size: 12px;color: #7f858d;'>{$item->precoAvista}</strong>
                                     </p>
