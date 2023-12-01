@@ -138,7 +138,7 @@
                                 Valor à vista no <b>Pix:</b>
                             </p>
                             <p style='font-size:30px'>
-                                <b>$valorFinalAvista</b>
+                                <b>R$$valorFinalAvista</b>
                             </p>
                             <p style='font-size:14px;margin-bottom:10px'>
                                 (Economize <b>R$$vlrDiff</b>)

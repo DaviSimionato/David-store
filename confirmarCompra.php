@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
-    <title>Pagamento</title>
+    <title>Confirmar compra</title>
 </head>
 <body style="background-color: #F2F3F4;">
     <header>
@@ -136,32 +136,31 @@
                     if($formaPag == "pix") {
                         echo "
                         <div style='display:flex;justify-content:space-between;align-items:center'>
-                            <p style='margin:0;font-size:12px'>Valor dos Produtos: </p>
+                            <p style='margin:0;font-size:12px'>Valor da compra: </p>
                             <p style='margin:0;margin-right:10px'><strong>R$$valorFinalParcel</strong></p>
+                        </div>
+                        <div style='display:flex;justify-content:space-between;align-items:center'>
+                            <p style='margin:0;font-size:12px'>Desconto: </p>
+                            <p style='margin:0;margin-right:10px'><strong style='color:#1f9050'>- R$$vlrDiff</strong></p>
                         </div>
                         <hr>
                         <div style='margin-top:15px;display:flex;justify-content:space-between;align-items:center'>
-                            <p style='margin:0;font-size:12px'>Total a prazo: </p>
-                            <p style='margin:0;margin-right:10px'><strong>R$$valorFinalParcel</strong></p>
-                        </div>
-                        <div style='display:flex;justify-content:center;align-items:center'>
-                            <p style='margin:0;margin-top:5px;font-size:12px'>
-                                (Em até <strong style='font-size:12px'>12x de {$totalCompra->parcelasTotais} sem juros</strong>)
-                            </p>
+                            <p style='margin:0;font-size:12px'>Total a vista no pix: </p>
+                            <p style='margin:0;margin-right:10px'><strong>{$totalCompra->precoAvista}</strong></p>
                         </div>
                         <div class='precoAvista'>
                             <p style='margin-top:10px;font-size:12px'>
                                 Valor à vista no <b>Pix:</b>
                             </p>
                             <p style='font-size:30px'>
-                                <b>$valorFinalAvista</b>
+                                <b>R$$valorFinalAvista</b>
                             </p>
                             <p style='font-size:14px;margin-bottom:10px'>
-                                (Economize <b>R$$vlrDiff</b>)
+                                (Economizou <b>R$$vlrDiff</b>)
                             </p>
                         </div>
                         <div class='btnsCarrinho'>
-                            <a href='confirmarCompra.php' class='gotoCarrinho'>Confirmar compra</a>
+                            <a href='includes/realizarPedido.php?fPag=$formaPag' class='gotoCarrinho'>Confirmar compra</a>
                             <a href='carrinho.php' class='gotoCarrinho'>Voltar</a>
                         </div>
                         ";
@@ -181,19 +180,8 @@
                                 (Em até <strong style='font-size:12px'>12x de {$totalCompra->parcelasTotais} sem juros</strong>)
                             </p>
                         </div>
-                        <div class='precoAvista'>
-                            <p style='margin-top:10px;font-size:12px'>
-                                Valor à vista no <b>Pix:</b>
-                            </p>
-                            <p style='font-size:30px'>
-                                <b>$valorFinalAvista</b>
-                            </p>
-                            <p style='font-size:14px;margin-bottom:10px'>
-                                (Economize <b>R$$vlrDiff</b>)
-                            </p>
-                        </div>
                         <div class='btnsCarrinho'>
-                            <a href='confirmarCompra.php' class='gotoCarrinho'>Confirmar compra</a>
+                            <a href='includes/realizarPedido.php?fPag=$formaPag' class='gotoCarrinho'>Confirmar compra</a>
                             <a href='carrinho.php' class='gotoCarrinho'>Voltar</a>
                         </div>
                         ";

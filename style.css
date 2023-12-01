@@ -1074,3 +1074,15 @@ footer {
         transform: rotate(-360deg);
     }
 }
+span.fav:hover {
+    animation: favHover .2s linear;
+}
+@keyframes favHover {
+    0% {
+        font-size: 25px;
+    }50% {
+        font-size: 26px;
+    }100% {
+        font-size: 25px;
+    }
+}
