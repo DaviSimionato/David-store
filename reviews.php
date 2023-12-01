@@ -91,6 +91,5 @@
             include_once("includes/footer.php");
         ?>
     </div>
-    <script src="js/review.js"></script>
 </body>
 </html>

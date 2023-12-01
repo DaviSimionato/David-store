@@ -5,8 +5,7 @@
         header("Location: entrar.php");
     }
     $idUsuario = $_SESSION['user']->idUsuario;
-    $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
-    $buscaReviews = $bd->query("select * from vwReviews where idProduto = $idProd");
+    $buscaReviews = $bd->query("select * from vwProdutosReviews where idUsuario = $idUsuario");
     function getEstrelas($nota) {
         $estrelasNota = '';
         for($i = 0;$i<floor($nota);$i++) {
@@ -44,19 +43,11 @@
     <section class="sectionProds container1400">
         <div style="margin-left: 20px" class="reviewContainer">
             <h2>Avaliações do produto</h2>
-            <div style="display: flex;margin-bottom: 25px" class="prodOp">
-                <?php 
-                    echo "
-                        <img src='{$produto->imagemProduto}' alt='{$produto->nome}' width=150>
-                        <p style='margin-left:15px'>{$produto->nome}</p>
-                    ";
-                ?>
-            </div>
             <div style="margin-left: 20px;margin-top:30px" class="reviews">
             <?php 
                 while($rev = $buscaReviews->fetch_object()) {
                     $notaTitulo = "";
-                    switch($rev->nota) {
+                    switch($rev->notaReview) {
                         case 0: $nota = "Péssimo";
                             break;
                         case 1: $nota = "Ruim";
@@ -69,9 +60,11 @@
                             break;
                         case 5: $nota = "Ótimo";
                     }
-                    $notaEstrelas = getEstrelas($rev->nota);
+                    $notaEstrelas = getEstrelas($rev->notaReview);
                     echo "
-                        <div class='review'>
+                        <p style='margin-left:15px'>{$rev->nome}</p>
+                        <img src='{$rev->imagemProduto}' alt='{$rev->nome}' width=150>
+                        <div style='margin-left:35px' class='review'>
                             <div class='nota'>
                                 <span style='margin-right:2px' class='material-symbols-outlined'>person</span>
                                 <p style='margin:0;font-weight:600;margin-right:5px;color:#444d59'>{$rev->nomeUsuario}</p>
@@ -94,6 +87,5 @@
             include_once("includes/footer.php");
         ?>
     </div>
-    <script src="js/review.js"></script>
 </body>
 </html>
