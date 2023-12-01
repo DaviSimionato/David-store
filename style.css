@@ -845,6 +845,42 @@ span.estrelaRev {
     display: flex;
     align-items: center;
 }
+.itensAcesso {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.acessConta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    width: calc(33% - 40px);
+}
+.acessConta p {
+    color: #7F858D;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+}
+.acessConta span {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    color: #E8772E;
+    margin-right: 5px;
+}
+.acessConta a {
+    display: flex;
+    align-items:center;
+    width:100%;
+    text-align: center;
+    justify-content: center;
+}
 /*pre carrinho*/
 .prodPreCarrinho {
     display: flex;

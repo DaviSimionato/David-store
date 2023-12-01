@@ -4,6 +4,9 @@
     if(!isset($_SESSION["user"])) {
         header("Location: entrar.php");
     }
+    $userId = $_SESSION['user']->idUsuario;
+    $buscaHistorico = $bd->query("select * from vwProdutosHistorico
+    where idUsuario = $userId order by codHist desc limit 25");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,7 @@
     <?php 
         include_once("includes/header.php");
     ?>
-    <section class="container1400">
+    <section style="width: 1430px;" class="container1400">
         <div class="userIntro">
             <div class="infoUser">
                 <span style="font-size: 60px;margin: 0 20px" class="material-symbols-outlined">account_circle</span>
@@ -44,11 +47,73 @@
                 </a>
             </div>
         </div>
+        <div class="itensAcesso">
+            <div class="acessConta">
+                <a href="pedidos.php">
+                    <span style="margin-bottom: 5px;" class="material-symbols-outlined">
+                        shopping_basket
+                    </span>
+                    <p>Meus pedidos</p>
+                </a>
+            </div>
+            <div class="acessConta">
+                <a href="favoritos.php">
+                    <span class="material-symbols-outlined">
+                        favorite
+                    </span>
+                    <p>Favoritos</p>
+                </a>
+            </div>
+            <div class="acessConta">
+                <a href="reviewsUser.php">
+                    <span class="material-symbols-outlined">
+                        thumb_up
+                    </span>
+                    <p>Avaliações</p>
+                </a> 
+            </div>
+        </div>
+    </section>
+    <section style="margin-top:30px" class="sectionProds container1400">
+        <?php 
+            echo "
+            <div class='sectionTopic'>
+                <h2 style='text-transform: uppercase; margin-bottom: 0' class='tituloSection'>Produtos vistos recentemente</h2>
+                <span style='margin-top: 15px;' class='material-symbols-outlined'>history</span>
+            </div>
+            <div class='produtosHistorico'>
+                <div class='ant'>
+                    <span class='material-symbols-outlined'>navigate_before</span>
+                </div>
+            ";
+            while($prodHist = $buscaHistorico->fetch_object()) {
+                echo "
+                    <div class='produtos prodHist' title='{$prodHist->nome}'>
+                        <a href='produto.php?{$prodHist->nome}&c={$prodHist->codigo}'>
+                        <img src='{$prodHist->imagemProduto}' alt=' width='268' height='162'>
+                        <p class='nome'>{$prodHist->nome}</p>
+                        <div class='infoPreco'>
+                            <p class='preco'>{$prodHist->precoAvista}</p>
+                            <p class='avisoPix'>À vista no PIX</p>
+                        </div>
+                        </a>
+                        <a href='includes/addCarrinho.php?c={$prodHist->codigo}&preCarrinho=1' class='comprar'>COMPRAR</a>
+                    </div>
+                    ";
+            }
+            echo "
+                <div class='prox'>
+                    <span class='material-symbols-outlined'>navigate_next</span>
+                </div>
+            </div>
+            ";
+        ?>
     </section>
     <div class="footerPesquisa">
         <?php 
             include_once("includes/footer.php");
         ?>
     </div>
+    <script src="js/sliderHist.js"></script>
 </body>
 </html>
