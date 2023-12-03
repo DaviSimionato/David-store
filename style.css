@@ -502,6 +502,15 @@ h2.tituloSection {
     'wght' 300,
     'GRAD' 0,
     'opsz' 24;
+    color:#7F858D
+}
+span.fav.favorito {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
+    color: #E8772E;
 }
 span.estrelaCheia {
     font-variation-settings:
@@ -601,12 +610,6 @@ a.categ:hover {
 .infotecProd .sectionTopic:hover {
     cursor: pointer;
     user-select: none;
-
-
-
-
-
-
     align-items: center;
 }
 .infoTecnica * {
@@ -881,6 +884,15 @@ span.estrelaRev {
     text-align: center;
     justify-content: center;
 }
+.pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding: 20px 30px;
+}
 /*pre carrinho*/
 .prodPreCarrinho {
     display: flex;
@@ -1110,7 +1122,7 @@ footer {
         transform: rotate(-360deg);
     }
 }
-span.fav:hover {
+header .fav:hover {
     animation: favHover .2s linear;
 }
 @keyframes favHover {

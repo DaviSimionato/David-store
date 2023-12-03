@@ -42,7 +42,9 @@
     ?>
     <section class="sectionProds container1400">
         <div style="margin-left: 20px" class="reviewContainer">
-            <h2>Avaliações do produto</h2>
+            <?php 
+                echo "<h2>Avaliações do usuário {$_SESSION['user']->nomeUsuario}</h2>"
+            ?>
             <div style="margin-left: 20px;margin-top:30px" class="reviews">
             <?php 
                 while($rev = $buscaReviews->fetch_object()) {
@@ -62,9 +64,9 @@
                     }
                     $notaEstrelas = getEstrelas($rev->notaReview);
                     echo "
-                        <p style='margin-left:15px'>{$rev->nome}</p>
+                        <p style='margin-left:15px;font-weight:700'>{$rev->nome}</p>
                         <img src='{$rev->imagemProduto}' alt='{$rev->nome}' width=150>
-                        <div style='margin-left:35px' class='review'>
+                        <div style='margin-left:35px;margin-bottom: 50px' class='review'>
                             <div class='nota'>
                                 <span style='margin-right:2px' class='material-symbols-outlined'>person</span>
                                 <p style='margin:0;font-weight:600;margin-right:5px;color:#444d59'>{$rev->nomeUsuario}</p>

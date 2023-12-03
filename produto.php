@@ -4,6 +4,7 @@
     $idProd = $_GET["c"];
     $reviewFeita = $_GET['reviewFeita'] ?? false;
     $addCart = $_GET['addCart'] ?? false;
+    $fav = "";
     $bd->query("update vwProdutos set acessos = acessos + 1 where codigo = $idProd");
     $produto = $bd->query("select * from vwProdutos where codigo = $idProd")->fetch_object();
     $buscaProdutosSimilares = $bd->query("select * from vwProdutos where idCategoria = {$produto->idCategoria}
@@ -29,6 +30,10 @@
         $userId = $_SESSION['user']->idUsuario;
         $buscaHistorico = $bd->query("select * from vwProdutosHistorico
         where idUsuario = $userId order by codHist desc limit 25");
+        $testeFav = $bd->query("select idProduto from favoritos where idUsuario = $userId and idProduto = $idProd");
+        if($testeFav->num_rows > 0) {
+            $fav = "favorito";
+        }
     }
     function getEstrelas($nota) {
         $estrelasNota = '';
@@ -104,8 +109,8 @@
                         <div class='space'></div>
                         <div class='nota'>$estrelasNotaProduto <p> - {$produto->nota} ({$produto->qtdReviews} $review)</p></div>
                         <div class='space'></div>
-                        <a href='#'><span class='material-symbols-outlined fav' title='Adicionar aos favoritos' 
-                        style='color:#7F858D;font-size:30px'>favorite</span></a>
+                        <a href='includes/favoritar.php?n={$produto->nome}&c={$produto->codigo}'><span class='material-symbols-outlined fav $fav' title='Adicionar aos favoritos' 
+                        style='font-size:30px'>favorite</span></a>
                     </div>
                     <div class='imagemProduto'>
                         <img src='{$produto->imagemProduto}' alt='$produto->nome' class='imagemProduto'>
