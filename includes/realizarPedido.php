@@ -10,7 +10,7 @@
             concat('R$',format(sum(precoAvistaVlr) + 25,2,'de_DE')) 'precoAvista'
             from vwCarrinho where idUsuario = '$idUsuario'")->fetch_object();
             $numeroPedido = floor(mt_rand(1000000,9999999));
-            $testeBd = $bd->query("select idPedido from pedidos where idPedido = $numeroPedido");
+            $testeBd = $bd->query("select idPedido from pedidos where numeroPedido = $numeroPedido");
             if($testeBd->num_rows > 0) {
                 cadastrarPedido();
             }else {
@@ -20,11 +20,11 @@
                     $totalPedido = $totalCompra->precoParcel;
                 }
                 $dataPedido = date("d/m/Y");
-                $bd->query("insert into pedidos (idPedido,totalPedido,dataPedido,idUsuario)
+                $bd->query("insert into pedidos (numeroPedido,totalPedido,dataPedido,idUsuario)
                 values ($numeroPedido,'$totalPedido','$dataPedido',$idUsuario)");
                 $itens = $bd->query("select * from vwCarrinho where idUsuario = $idUsuario");
                 while($prod = $itens->fetch_object()) {
-                    $bd->query("insert into itensPedido (idproduto,idPedido)
+                    $bd->query("insert into itensPedido (idproduto,numeroPedido)
                     values ('{$prod->codigo}','$numeroPedido')");
                 }
                 $bd->query("delete from carrinho where idUsuario = $idUsuario");

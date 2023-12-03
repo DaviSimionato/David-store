@@ -2,7 +2,12 @@
     require_once("banco.php");
     session_start();
 
-    if($_POST) {
+    if(isset($_SESSION['user'])) {
+        $idUsuario = $_SESSION['user']->idUsuario;
+        $reloadUser = $bd->query("select * from usuarios where idUsuario = $idUsuario limit 1")->fetch_object();
+        $_SESSION['user'] = $reloadUser;
+    }
+    if(!isset($_SESSION['user']) && $_POST) {
         $termoLogin = $_POST["loginEmail"];
         $senha = $_POST["loginSenha"];
         $testeAcesso = $bd->query("select * from usuarios where nomeUsuario = '$termoLogin'

@@ -27,26 +27,9 @@
     ?>
 </head>
 <body style="background-color: #F2F3F4;">
-    <header>
-        <div class="header">
-            <a href="index.php"><img src="imgs/svg/logo-no-background.svg" alt="Logo" height="20"></a>
-            <?php 
-                if(isset($_SESSION["user"])) {
-                    echo "
-                    <div class='entrarOuCad'>
-                        <span class='material-symbols-outlined'>account_circle</span>
-                        <div class='sessionInfo'>
-                            <p>
-                                Olá, {$_SESSION['user']->nomeUsuario}
-                            </p>
-                            <p><strong><a href='minhaConta.php'>MINHA CONTA</a></strong>
-                        </div>
-                    </div>
-                    ";  
-                }
-            ?>
-        </div>
-    </header>
+    <?php 
+        include_once("includes/header.php");
+    ?>
     <section style="margin-top: 15px;" class="container1400 carrinhoCompras">
         <div class="produtosCarrinho">
             <div class="sectionTopic">

@@ -5,7 +5,7 @@
         header("Location: entrar.php");
     }
     $idUsuario = $_SESSION['user']->idUsuario;
-    $buscaPedidos = $bd->query("select * from pedidos where idUsuario = $idUsuario");
+    $buscaPedidos = $bd->query("select * from pedidos where idUsuario = $idUsuario order by idPedido desc");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,7 @@
                 <div class='pedido'>
                     <div class='pedInfo'>
                         <p style='text-transform:uppercase'><b>Número do pedido</b></p>
-                        <p>#{$ped->idPedido}</p>
+                        <p>#{$ped->numeroPedido}</p>
                     </div>
                     <div class='pedInfo'>
                         <p style='text-transform:uppercase'><b>Status</b></p>

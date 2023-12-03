@@ -3,6 +3,7 @@
     require_once("includes/login.php");
     $contaCriada = $_GET['contaCriada'] ?? false;
     $credIncor = $_GET['credIncor'] ?? false;
+    $senhaAlter = $_GET['senhaAlter'] ?? false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,13 @@
                 echo "
                     <div class='msgDisplay sucesso'>
                         <p>Conta criada com sucesso!</p>
+                    </div>
+                ";
+            }
+            if($senhaAlter) {
+                echo "
+                    <div class='msgDisplay sucesso'>
+                        <p>Senha alterada!</p>
                     </div>
                 ";
             }
